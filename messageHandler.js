@@ -10,7 +10,8 @@ class MessageHandler{
     async Handle(message, channel, tags){
         let streamer = channel.slice(1);
         let msg = message.toLowerCase();
-        const getList = await ArrayGroup.findOne({ listName: 'ListaFortnite' }).exec();
+        const getList = await ArrayGroup.findOne({ listName: `ListaFortnite${streamer}` }).exec();
+        console.log(getList);
         if(msg[0] == "-")
         {
             if(tags.username == streamer || tags.mod || tags.username == 'mrklus')
@@ -22,7 +23,7 @@ class MessageHandler{
                 }
                 if(msg.includes('-cerrar')) // Funciona
                 {
-                    ArrayGroup.findOneAndUpdate({ listName: 'ListaFortnite' }, { userGroup: getList.userGroup, listName: 'ListaFortnite', isOpen: false }, (err, result) => {
+                    ArrayGroup.findOneAndUpdate({ listName: `ListaFortnite${streamer}` }, { userGroup: getList.userGroup, listName: `ListaFortnite${streamer}`, isOpen: false }, (err, result) => {
                         if(err)
                         {
                             console.log(err);
@@ -34,7 +35,7 @@ class MessageHandler{
                 }
                 if(msg.includes('-abrir')) // Funciona
                 {
-                    ArrayGroup.findOneAndUpdate({ listName: 'ListaFortnite' }, { userGroup: getList.userGroup, listName: 'ListaFortnite', isOpen: true }, (err, result) => {
+                    ArrayGroup.findOneAndUpdate({ listName: `ListaFortnite${streamer}` }, { userGroup: getList.userGroup, listName: `ListaFortnite${streamer}`, isOpen: true }, (err, result) => {
                         if(err)
                         {
                             console.log(err);
@@ -46,7 +47,7 @@ class MessageHandler{
                 }
                 if(msg.includes('-clear')) // Funciona
                 {
-                    ArrayGroup.findOneAndUpdate({ listName: 'ListaFortnite' }, { userGroup: [], listName: 'ListaFortnite' }, (err, result) => {
+                    ArrayGroup.findOneAndUpdate({ listName: `ListaFortnite${streamer}` }, { userGroup: [], listName: `ListaFortnite${streamer}` }, (err, result) => {
                         if(err)
                         {
                             console.log(err);
@@ -107,7 +108,7 @@ class MessageHandler{
                     }
                     else{
                         getList.userGroup.push(tags.username);
-                        ArrayGroup.findOneAndUpdate({ listName: 'ListaFortnite' }, { userGroup: getList.userGroup, listName: 'ListaFortnite' }, (err, result) => {
+                        ArrayGroup.findOneAndUpdate({ listName: `ListaFortnite${streamer}` }, { userGroup: getList.userGroup, listName: `ListaFortnite${streamer}` }, (err, result) => {
                             if(err)
                             {
                                 console.log(err);

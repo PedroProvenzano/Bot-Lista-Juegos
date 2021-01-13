@@ -14,7 +14,7 @@ class Connection {
                 username: process.env.NICK,
                 password: process.env.IRC_TOKEN
             },
-            channels: [ process.env.INITIAL_CHANNEL1 /*, process.env.INITIAL_CHANNEL2*/ ]
+            channels: [ process.env.INITIAL_CHANNEL1, process.env.INITIAL_CHANNEL2 ]
         });
         this.client.connect();
         this.messageHandler = new MessageHandler(this.client);
