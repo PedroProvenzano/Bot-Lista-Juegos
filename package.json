@@ -4,7 +4,7 @@
   "description": "Bot para twitch",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "Mrklus",
   "license": "ISC",
