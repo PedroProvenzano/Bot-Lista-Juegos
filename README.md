@@ -37,3 +37,15 @@ Este comando tienen que usarlo los usuarios para agregarse a la lista, lo ideal 
 
 -lista
 Con este comando el bot muestra la lista de jugadores 
+
+
+
+Plan a futuro cercano:
+
+- Vincular con base de datos para que no se reinicie el array cuando el bot se reinicia.
+
+- Hacer que la lista se muestre de forma mas prolija 
+
+- Vincular la palabra 'jugar' con -info para que cuando alguien dice puedo jugar? o alguna variante el bot publique directamente la informacion de como sumarse a la lista
+
+- Subirlo a un host para no depender de mi pc para que funcione
