@@ -54,10 +54,11 @@ Con este comando el bot muestra la lista de jugadores
 ```
 - Subirlo a un host para no depender de mi pc para que funcione
 ```diff
-- Pendiente
++ Completado
 ```
-- Vincular la palabra 'jugar' con -info para que cuando alguien dice puedo jugar? o alguna variante el bot publique directamente la informacion de como sumarse a la lista
+- Compatible con varios servidores a la vez
 ```diff
 - Pendiente
 ```
-- Compatible con varios servidores a la vez
+- Vincular la palabra 'jugar' con -info para que cuando alguien dice puedo jugar? o alguna variante el bot publique directamente la informacion de como sumarse a la lista
+
