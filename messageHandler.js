@@ -11,7 +11,15 @@ class MessageHandler{
         let streamer = channel.slice(1);
         let msg = message.toLowerCase();
         const getList = await ArrayGroup.findOne({ listName: `ListaFortnite${streamer}` }).exec();
-        console.log(getList);
+        if(getList==null)
+        {
+            const list = new ArrayGroup({
+                userGroup: [],
+                listName: `ListaFortnite${streamer}`,
+                isOpen: true
+            });
+            list.save();
+        }
         if(msg[0] == "-")
         {
             if(tags.username == streamer || tags.mod || tags.username == 'mrklus')
