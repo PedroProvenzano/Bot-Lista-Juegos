@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "mongoose": "^5.11.11",
     "nodemon": "^2.0.7",
     "tmi.js": "^1.7.1"
   }

@@ -1,49 +1,75 @@
+const { get } = require('mongoose');
+const ArrayGroup = require('./Models/ArrayGroup');
+
 class MessageHandler{
     constructor(client){
         this.client = client;
         this.usersOrder = [];
         this.isOpen = true;
     }
-    Handle(message, channel, tags){
+    async Handle(message, channel, tags){
         let streamer = channel.slice(1);
         let msg = message.toLowerCase();
+        const getList = await ArrayGroup.findOne({ listName: 'ListaFortnite' }).exec();
         if(msg[0] == "-")
         {
             if(tags.username == streamer || tags.mod || tags.username == 'mrklus')
             {
-                if(msg.includes('-info'))
+                if(msg.includes('-info')) // Funciona
                 {
                     this.client.say(channel, `Querés sumarte a las partidas? agregate a la lista escribiendo -sumarse en el chat, para consultar el orden actual de la lista poné -lista`);
                     return;
                 }
-                if(msg.includes('-cerrar'))
+                if(msg.includes('-cerrar')) // Funciona
                 {
-                    this.isOpen = false;
-                    this.client.say(channel, `Lista cerrada!`);
+                    ArrayGroup.findOneAndUpdate({ listName: 'ListaFortnite' }, { userGroup: getList.userGroup, listName: 'ListaFortnite', isOpen: false }, (err, result) => {
+                        if(err)
+                        {
+                            console.log(err);
+                        }else{
+                            this.client.say(channel, `Lista cerrada!`);
+                            return;
+                        }
+                    });      
                 }
-                if(msg.includes('-abrir'))
+                if(msg.includes('-abrir')) // Funciona
                 {
-                    this.isOpen = true;
-                    this.client.say(channel, `Lista abierta!`); 
+                    ArrayGroup.findOneAndUpdate({ listName: 'ListaFortnite' }, { userGroup: getList.userGroup, listName: 'ListaFortnite', isOpen: true }, (err, result) => {
+                        if(err)
+                        {
+                            console.log(err);
+                        }else{
+                            this.client.say(channel, `Lista abierta!`); 
+                            return;
+                        }
+                    });
                 }
-                if(msg.includes('-clear'))
+                if(msg.includes('-clear')) // Funciona
                 {
-                    this.usersOrder = [];
-                    this.client.say(channel, `Lista limpia`);
+                    ArrayGroup.findOneAndUpdate({ listName: 'ListaFortnite' }, { userGroup: [], listName: 'ListaFortnite' }, (err, result) => {
+                        if(err)
+                        {
+                            console.log(err);
+                        }else{
+                            this.client.say(channel, `Lista limpia`);
+                            return;
+                        }
+                    });
                 }
-                if(msg.includes('-agregar'))
+                if(msg.includes('-agregar')) // Resolver
                 {
                     msg = msg.slice(9);
                     if(msg != '')
                     {
                         this.usersOrder.push(msg);
+
                         this.client.say(channel, `Usuario ${msg} agregado correctamente`);
                     }
                     else{
                         this.client.say(channel, `Epa, te falta poner un usuario para agregar :(`);
                     }
                 }
-                if(msg.includes('-siguiente'))
+                if(msg.includes('-siguiente')) // Resolver
                 {
                     if(this.usersOrder.length == 0){
                         this.client.say(channel, `Todavía no hay jugadores anotados, podés agregar con el comando -agregar :)`);
@@ -70,19 +96,27 @@ class MessageHandler{
                     }
                 }
             }
-            if(msg.includes('-sumarse'))
+            if(msg.includes('-sumarse')) // Funciona
             {
-                if(this.isOpen)
+                if(getList.isOpen)
                 {
-                    if(this.usersOrder.includes(tags.username))
+                    if(getList.userGroup.includes(tags.username))
                     {
                         this.client.say(channel, `Ya estás en la lista`);
                         return; 
                     }
                     else{
-                        this.usersOrder.push(tags.username);
-                        this.client.say(channel, `Usuario ${tags.username} agregado a la lista :)`);
-                        return;
+                        getList.userGroup.push(tags.username);
+                        ArrayGroup.findOneAndUpdate({ listName: 'ListaFortnite' }, { userGroup: getList.userGroup, listName: 'ListaFortnite' }, (err, result) => {
+                            if(err)
+                            {
+                                console.log(err);
+                            }else{
+                                console.log(result);
+                                this.client.say(channel, `Usuario ${tags.username} agregado a la lista :)`);
+                                return;
+                            }
+                        })
                     }
                 }
                 else
@@ -91,15 +125,27 @@ class MessageHandler{
                     return; 
                 }
             }
-            if(msg.includes('-lista'))
+            if(msg.includes('-lista')) // Funciona
             {
-                if(this.usersOrder.length == 0){
-                    this.client.say(channel, `Todavía no hay jugadores anotados, podés agregar con el comando -agregar :)`);
+                if(getList.userGroup.length == 0){
+                    this.client.say(channel, `Todavía no hay jugadores anotados, podés sumarte con el comando -sumarse :)`);
                     return;
                 }
-                this.client.say(channel, `La lista de jugadores es: ${this.usersOrder}`);
+                let ListString = '';
+                for(let i = 0; i < getList.userGroup.length; i++)
+                {
+                    if(i != getList.userGroup.length - 1)
+                    {
+                        ListString+= ` ${getList.userGroup[i]},`;
+                    }
+                    else
+                    {
+                        ListString+= ` ${getList.userGroup[i]}.`;
+                    }
+                }
+                this.client.say(channel, `La lista de jugadores es:${ListString}`);
             }
-            if(msg.includes('-modificar'))
+            if(msg.includes('-modificar')) // Deprecated
             {
                 if(tags.username == 'mrklus')
                 {
