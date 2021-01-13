@@ -2,7 +2,8 @@ const { get } = require('mongoose');
 const ArrayGroup = require('./Models/ArrayGroup');
 
 class MessageHandler{
-    constructor(client){
+    constructor(client, io){
+        this.io = io;
         this.client = client;
         this.usersOrder = [];
         this.isOpen = true;
@@ -63,7 +64,11 @@ class MessageHandler{
                             this.client.say(channel, `Lista limpia`);
                             return;
                         }
-                    });
+                    }).then(async () => {
+                        let getListEmited = await ArrayGroup.findOne({ listName: `ListaFortnite${streamer}` }).exec();
+                        this.io.emit("transmition", getListEmited);
+                        return;
+                    }); 
                 }
                 if(msg.includes('-agregar')) // Resolver
                 {
@@ -121,11 +126,13 @@ class MessageHandler{
                             {
                                 console.log(err);
                             }else{
-                                console.log(result);
                                 this.client.say(channel, `Usuario ${tags.username} agregado a la lista :)`);
-                                return;
                             }
-                        })
+                        }).then(async () => {
+                            let getListEmited = await ArrayGroup.findOne({ listName: `ListaFortnite${streamer}` }).exec();
+                            this.io.emit("transmition", getListEmited);
+                            return;
+                        }); 
                     }
                 }
                 else
@@ -153,22 +160,6 @@ class MessageHandler{
                     }
                 }
                 this.client.say(channel, `La lista de jugadores es:${ListString}`);
-            }
-            if(msg.includes('-modificar')) // Deprecated
-            {
-                if(tags.username == 'mrklus')
-                {
-                    msg = msg.slice(10);
-                    if(msg == "")
-                    {
-                        this.client.say(channel, `No puede estar vacio, para eso usa el comando -clear`);
-                    }
-                    else
-                    {
-                        this.usersOrder = JSON.parse(msg);
-                        this.client.say(channel, `Lista modificada correctamente`);
-                    }
-                }
             }
         }
     }
