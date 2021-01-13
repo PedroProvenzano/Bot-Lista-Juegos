@@ -1,0 +1,16 @@
+{
+  "name": "bots-ajenos",
+  "version": "1.0.0",
+  "description": "Bot para twitch",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Mrklus",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7",
+    "tmi.js": "^1.7.1"
+  }
+}
