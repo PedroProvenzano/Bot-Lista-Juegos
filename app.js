@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   console.log('a user connected');
 
-  io.on('listStatus', (msg) => {
+  socket.on('listStatus', (msg) => {
     connection.ListenHandleIo(msg);
   });
 });
