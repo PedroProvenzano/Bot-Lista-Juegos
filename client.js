@@ -23,6 +23,11 @@ class Connection {
             if(self) return;
             this.messageHandler.Handle(message, channel, tags);
         });
+        
+        this.io.on('listStatus', (msg) => {
+            this.messageHandler.HangleDataBase(msg);
+        })
+        
     }
 }
 

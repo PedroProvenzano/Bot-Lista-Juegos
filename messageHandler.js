@@ -8,6 +8,30 @@ class MessageHandler{
         this.usersOrder = [];
         this.isOpen = true;
     }
+    
+    async HangleDataBase(msg)
+    {
+        const getList = await ArrayGroup.findOne({ listName: msg.channel }).exec();
+        ArrayGroup.findOneAndUpdate({ listName: msg.channel }, { userGroup: getList.userGroup, listName: msg.channel, isOpen: msg.isOpen }, (err, result) => {
+            if(err)
+            {
+                console.log(err);
+            }else{
+                if(msg.isOpen)
+                {
+                    this.client.say(msg.channel.slice(13), `Lista Abierta!`);
+                    this.io.emit("listStatusServer", msg);
+                    return;  
+                }else
+                {
+                    this.client.say(msg.channel.slice(13), `Lista Cerrada!`);
+                    this.io.emit("listStatusServer", msg);
+                    return;
+                }
+            }
+        }); 
+    }
+    
     async Handle(message, channel, tags){
         let streamer = channel.slice(1);
         let msg = message.toLowerCase();
