@@ -1,4 +1,4 @@
-//var socket = io();
+var socket = io();
 
 const ListaUsuarios = document.getElementById("listContainer");
 const streamTitle = document.getElementById("streamTitle");
@@ -10,7 +10,7 @@ if(localStorage.channel)
     streamTitle.innerText = `Fila de ${channel.slice(13)}`;
 }
 
-/*
+
 socket.on('transmition', msg => {
     if(msg.listName == channel)
     {
@@ -24,7 +24,7 @@ socket.on('transmition', msg => {
         }
     }
 });
-*/
+
 
 
 const botonSet = document.getElementById("botonSet");
