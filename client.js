@@ -27,7 +27,7 @@ class Connection {
     }
     async ListenHandleIo(msg)
     {
-        this.messageHandler.HangleDataBase(msg);
+        this.messageHandler.HandleDataBase(msg);
     }
 }
 
