@@ -117,7 +117,7 @@ botonLista.addEventListener('click', () => {
             channel: channel,
             isOpen: false
         }
-        socket.io('listStatus', message);
+        socket.emit('listStatus', message);
     }
     else
     {
@@ -128,6 +128,6 @@ botonLista.addEventListener('click', () => {
             channel: channel,
             isOpen: true
         }
-        socket.io('listStatus', message);
+        socket.emit('listStatus', message);
     }
 });
