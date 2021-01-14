@@ -25,6 +25,12 @@ class MessageHandler{
         {
             if(tags.username == streamer || tags.mod || tags.username == 'mrklus')
             {
+                if(msg.includes('-refresh'))
+                {
+                    let getListEmited = await ArrayGroup.findOne({ listName: `ListaFortnite${streamer}` }).exec();
+                    this.io.emit("transmition", getListEmited);
+                    return;
+                }
                 if(msg.includes('-info')) // Funciona
                 {
                     this.client.say(channel, `Querés sumarte a las partidas? agregate a la lista escribiendo -sumarse en el chat, para consultar el orden actual de la lista poné -lista`);
@@ -85,7 +91,7 @@ class MessageHandler{
                 }
                 if(msg.includes('-siguiente')) // Resolver
                 {
-                    if(this.usersOrder.length == 0){
+                    if(getList.length == 0){
                         this.client.say(channel, `Todavía no hay jugadores anotados, podés agregar con el comando -agregar :)`);
                         return;
                     }
