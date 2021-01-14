@@ -1,7 +1,20 @@
 var socket = io();
-
+// DOM
 const ListaUsuarios = document.getElementById("listContainer");
 const streamTitle = document.getElementById("streamTitle");
+// Estilado
+const table = document.getElementById("table");
+const customCont = document.getElementById("customCont");
+const html = document.querySelector("html");
+
+const colorLista = document.getElementById("colorLista");
+const colorBorde = document.getElementById("colorBorde");
+const colorFuente = document.getElementById("colorFuente");
+const colorFondo = document.getElementById("colorFondo");
+const buttonColors = document.getElementById("buttonColors");
+// Botones
+const botonLista = document.getElementById("buttonList");
+
 let clicked = true;
 let channel = "";
 if(localStorage.channel)
@@ -68,18 +81,7 @@ botonSet.addEventListener('click', () => {
     inputSet.value = "";
 });
 
-// Estilado
-const table = document.getElementById("table");
-const customCont = document.getElementById("customCont");
-const html = document.querySelector("html");
 
-const colorLista = document.getElementById("colorLista");
-const colorBorde = document.getElementById("colorBorde");
-const colorFuente = document.getElementById("colorFuente");
-const colorFondo = document.getElementById("colorFondo");
-const buttonColors = document.getElementById("buttonColors");
-// Botones
-const botonLista = document.getElementById("buttonList");
 
 
 
