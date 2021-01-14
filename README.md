@@ -1,6 +1,15 @@
 # Bot-Lista-Juegos
 Bot de Twitch para armar listas de juegos
 
+## Como usar la pagina
+
+Ingresar a este link:
+https://bot-twitch-lista-juegos.herokuapp.com/
+
+En donde pide nombre del canal ingresar el nombre de tu canal de twitch y tocar en SET.
+Despues cuando alguien se sume a la lista va a aparecer en pantalla.
+
+
 ## Comandos del bot:
 
 todos los comandos tienen que empezar con - para que el bot los lea
