@@ -70,6 +70,11 @@ class MessageHandler{
                             console.log(err);
                         }else{
                             this.client.say(channel, `Lista cerrada!`);
+                            let msg = {
+                                channel: `ListaFortnite${streamer}`,
+                                isOpen: false
+                            }
+                            this.io.emit("listStatusServer", msg);
                             return;
                         }
                     });      
@@ -82,6 +87,11 @@ class MessageHandler{
                             console.log(err);
                         }else{
                             this.client.say(channel, `Lista abierta!`); 
+                            let msg = {
+                                channel: `ListaFortnite${streamer}`,
+                                isOpen: true
+                            }
+                            this.io.emit("listStatusServer", msg);
                             return;
                         }
                     });
