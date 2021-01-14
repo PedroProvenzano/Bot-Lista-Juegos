@@ -37,12 +37,39 @@ const colorBorde = document.getElementById("colorBorde");
 const colorFuente = document.getElementById("colorFuente");
 const colorFondo = document.getElementById("colorFondo");
 const buttonColors = document.getElementById("buttonColors");
+let linked = false;
 buttonColors.addEventListener('click', () => {
     table.style.backgroundColor = colorLista.value;
-    table.style.borderColor = colorBorde.value;
     table.style.color = colorFuente.value;
     customCont.style.backgroundColor = colorLista.value;
-    customCont.style.borderColor = colorBorde.value;
     customCont.style.color = colorFuente.value;
-    html.style.backgroundColor = colorFondo.value;
+
+    if(linked)
+    {
+        table.style.borderColor = colorBorde.value;
+        customCont.style.borderColor = colorBorde.value;
+        html.style.backgroundColor = colorFondo.value;
+    }
+    else 
+    {
+        table.style.borderColor = colorFondo.value;
+        customCont.style.borderColor = colorFondo.value;
+        html.style.backgroundColor = colorFondo.value;
+    }
+});
+let clicked = true;
+const buttonLink = document.getElementById("buttonLink");
+
+
+buttonLink.addEventListener('click', () => {
+    if(clicked)
+    {
+        colorBorde.disabled = true;
+        clicked = false;
+    }   
+    else
+    {
+        colorBorde.disabled = false;
+        clicked = true;
+    }
 });
