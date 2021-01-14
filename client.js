@@ -1,6 +1,7 @@
 const tmi = require('tmi.js');
 require('dotenv/config');
 const MessageHandler = require('./messageHandler.js');
+const { listenerCount } = require('./Models/ArrayGroup.js');
 
 class Connection {
     constructor(io){
@@ -23,11 +24,10 @@ class Connection {
             if(self) return;
             this.messageHandler.Handle(message, channel, tags);
         });
-        
-        this.io.on('listStatus', (msg) => {
-            this.messageHandler.HangleDataBase(msg);
-        })
-        
+    }
+    async ListenHandleIo(msg)
+    {
+        this.messageHandler.HangleDataBase(msg);
     }
 }
 

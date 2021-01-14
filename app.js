@@ -24,6 +24,10 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 });
 
+io.on('listStatus', (msg) => {
+    connection.ListenHandleIo(msg);
+});
+
 http.listen(port, () => {
   console.log('listening on *:3000');
 });

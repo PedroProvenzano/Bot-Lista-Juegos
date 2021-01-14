@@ -9,7 +9,7 @@ class MessageHandler{
         this.isOpen = true;
     }
     
-    async HangleDataBase(msg)
+    async HandleDataBase(msg)
     {
         const getList = await ArrayGroup.findOne({ listName: msg.channel }).exec();
         ArrayGroup.findOneAndUpdate({ listName: msg.channel }, { userGroup: getList.userGroup, listName: msg.channel, isOpen: msg.isOpen }, (err, result) => {
