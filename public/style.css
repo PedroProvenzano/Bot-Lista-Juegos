@@ -20,7 +20,7 @@ html{
     justify-content: center;
     width: 100%;
     height: 15%;
-    background-color: rgba(162, 194, 253, 0.808);
+    background-color: rgba(99, 99, 99, 0.068);
 }
 h2{
     margin-top: 1rem;
@@ -75,4 +75,24 @@ button{
     margin-left: 4px;
     font-size: 1rem;
     font-style: italic;
+}
+
+.customCont{
+    margin-top: 2rem;
+    border: 5px dotted black;
+    border-radius: 5%;
+    background-color: rgba(176, 202, 251, 0.808);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+.colorCont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+}
+.buttonColors{
+    align-self: center;
 }

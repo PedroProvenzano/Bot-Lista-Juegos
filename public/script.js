@@ -26,3 +26,23 @@ botonSet.addEventListener('click', () => {
     streamTitle.innerText = `Fila de ${inputSet.value}`;
     inputSet.value = "";
 });
+
+// Estilado
+const table = document.getElementById("table");
+const customCont = document.getElementById("customCont");
+const html = document.querySelector("html");
+
+const colorLista = document.getElementById("colorLista");
+const colorBorde = document.getElementById("colorBorde");
+const colorFuente = document.getElementById("colorFuente");
+const colorFondo = document.getElementById("colorFondo");
+const buttonColors = document.getElementById("buttonColors");
+buttonColors.addEventListener('click', () => {
+    table.style.backgroundColor = colorLista.value;
+    table.style.borderColor = colorBorde.value;
+    table.style.color = colorFuente.value;
+    customCont.style.backgroundColor = colorLista.value;
+    customCont.style.borderColor = colorBorde.value;
+    customCont.style.color = colorFuente.value;
+    html.style.backgroundColor = colorFondo.value;
+});

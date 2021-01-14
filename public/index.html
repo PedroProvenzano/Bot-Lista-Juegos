@@ -8,7 +8,7 @@
     <title>Bot de Fila</title>
 </head>
 <body>
-    <div class="table">
+    <div class="table" id="table">
         <div class="titleContainer">
             <h2 id="streamTitle"> Fila </h2>
         </div>
@@ -22,6 +22,27 @@
     </div>
     <div class="spam">
         <p>Hecho por Mrklus</p>
+    </div>
+    <div class="customCont" id="customCont">
+        <div class="colorCont">
+            <p>Color Lista</p>
+            <input type="color" id="colorLista">
+        </div>
+        <div class="colorCont">
+            <p>Color Borde</p>
+            <input type="color" id="colorBorde">
+        </div>
+        <div class="colorCont">
+            <p>Color Fuente</p>
+            <input type="color" id="colorFuente">
+        </div>
+        <div class="colorCont">
+            <p>Color Fondo</p>
+            <input type="color" id="colorFondo">
+        </div>
+        <div class="colorCont">
+            <button class="buttonColors" id="buttonColors">Set</button>
+        </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./script.js"></script>
