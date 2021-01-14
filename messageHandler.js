@@ -21,6 +21,8 @@ class MessageHandler{
             });
             list.save();
         }
+        let getListEmited = await ArrayGroup.findOne({ listName: `ListaFortnite${streamer}` }).exec();
+        this.io.emit("transmition", getListEmited);
         if(msg[0] == "-")
         {
             if(tags.username == streamer || tags.mod || tags.username == 'mrklus')
