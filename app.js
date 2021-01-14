@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-//require('./connection');
 const tmi = require('tmi.js');
 require('dotenv/config');
+const port = process.env.PORT;
 const connectionMong = require('./connection');
 const Client = require('./client.js');
 const connection = new Client(io);
@@ -24,6 +24,6 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 });
 
-http.listen(3000, () => {
+http.listen(port, () => {
   console.log('listening on *:3000');
 });
