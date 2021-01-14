@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kufam&display=swap');
 
+
 *{
     margin: 0;
     padding: 0;
@@ -8,10 +9,13 @@
     user-select: none;
 }
 html{
+    background-color: rgb(225, 253, 255);
+}
+body{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(225, 253, 255);
 }
 .titleContainer{
     display: flex;
@@ -34,7 +38,7 @@ h2{
     border: 8px dotted black;
     border-radius: 5%;
     overflow: hidden;
-    width: 500px;
+    width: 50vh;
     min-height: 500px;
     display: flex;
     flex-direction: column;
@@ -43,8 +47,8 @@ h2{
 }
 .user{
     width: 100%;
-    font-size: 1rem;
-    padding: 0.6rem; 
+    font-size: 2.4vh;
+    padding: 1vh; 
 }
 .user:nth-of-type(2n)
 {
@@ -54,8 +58,11 @@ h2{
     width: 100%;
 }
 input{
-    font-size: 2rem;
+    font-size: 2vh;
     height: 50px;
+}
+.inputSet{
+    width: 80vh;
 }
 button{
     width: 100px;
@@ -69,7 +76,7 @@ button{
     align-content: center;
     justify-content: center;
     margin-top: 2rem;
-    width: 500px;
+    width: 50vh;
 }
 .spam{
     margin-left: 4px;
@@ -79,6 +86,7 @@ button{
 
 .customCont{
     margin-top: 2rem;
+    width: 50vh;
     border: 5px dotted black;
     border-radius: 5%;
     background-color: rgba(176, 202, 251, 0.808);
@@ -95,4 +103,19 @@ button{
 }
 .buttonColors{
     align-self: center;
+}
+
+/*
+@media only screen and (max-width: 300px) {
+    .table{
+        margin-top: 2rem;
+        overflow: hidden;
+        min-width: 100px;
+        max-width: 200px;
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
