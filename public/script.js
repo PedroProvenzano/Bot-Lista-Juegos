@@ -9,7 +9,22 @@ if(localStorage.channel)
     channel = localStorage.getItem("channel");
     streamTitle.innerText = `Fila de ${channel.slice(13)}`;
 }
-
+if(localStorage.isOpen)
+{
+    let isOpen = JSON.parse(localStorage.getItem("isOpen"));
+    if(isOpen)
+    {
+        botonLista.innerText = "Lista Abierta";
+        botonLista.style.backgroundColor = "#43ff19";
+        clicked = true;
+    }
+    else
+    {
+        botonLista.innerText = "Lista Cerrada";
+        botonLista.style.backgroundColor = "#ff1919";
+        clicked = false;
+    }
+}
 socket.on('listStatusServer', (msg) => {
     if(msg.channel == channel)
     {
@@ -117,6 +132,8 @@ botonLista.addEventListener('click', () => {
             channel: channel,
             isOpen: false
         }
+        let isOpen = JSON.stringify(false);
+        localStorage.setItem("isOpen", isOpen);
         socket.emit('listStatus', message);
     }
     else
@@ -128,6 +145,8 @@ botonLista.addEventListener('click', () => {
             channel: channel,
             isOpen: true
         }
+        let isOpen = JSON.stringify(true);
+        localStorage.setItem("isOpen", isOpen);
         socket.emit('listStatus', message);
     }
 });
