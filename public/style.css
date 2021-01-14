@@ -43,8 +43,8 @@ h2{
 }
 .user{
     width: 100%;
-    font-size: 1.6rem;
-    padding: 1.2rem; 
+    font-size: 1rem;
+    padding: 0.6rem; 
 }
 .user:nth-of-type(2n)
 {
