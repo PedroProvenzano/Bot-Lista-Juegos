@@ -69,6 +69,10 @@ Con este comando el bot muestra la lista de jugadores
 ```diff
 + Completado
 ```
+- Lista Personalizable, con perfiles guardados
+```diff
++ Completado
+```
 - Agregar un front para hacer un display de la lista
 ```diff
 - Pendiente
