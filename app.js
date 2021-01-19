@@ -26,6 +26,10 @@ io.on('connection', (socket) => {
   socket.on('listStatus', (msg) => {
     connection.ListenHandleIo(msg);
   });
+
+  socket.on('restarUsuario', (msg) => {
+    connection.ListenHandleIo(msg);
+  });
 });
 
 

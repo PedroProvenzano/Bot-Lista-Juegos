@@ -38,6 +38,7 @@ if(localStorage.isOpen)
         clicked = false;
     }
 }
+
 socket.on('listStatusServer', (msg) => {
     if(msg.channel == channel)
     {
@@ -65,6 +66,17 @@ socket.on('transmition', msg => {
             let div = document.createElement('div');
             div.setAttribute('class', 'user');
             div.innerHTML = `${i}`;
+            let botonSacar = document.createElement('div');
+            botonSacar.innerHTML = `<p> 'x' </p>`;
+            botonSacar.addEventListener('click', (i) => {
+                let msg = {
+                    type: "restarUsuario",
+                    username: `${i}`,
+                    channel: channel
+                }
+                socket.emit('restarUsuario', msg);
+            });
+            div.appendChild(botonSacar);
             ListaUsuarios.appendChild(div);
         }
     }
@@ -131,6 +143,7 @@ botonLista.addEventListener('click', () => {
         botonLista.style.backgroundColor = "#ff1919";
         clicked = false;
         let message = {
+            type: "listStatus",
             channel: channel,
             isOpen: false
         }
@@ -144,6 +157,7 @@ botonLista.addEventListener('click', () => {
         botonLista.style.backgroundColor = "#43ff19";
         clicked = true;
         let message = {
+            type: "listStatus",
             channel: channel,
             isOpen: true
         }

@@ -12,24 +12,50 @@ class MessageHandler{
     async HandleDataBase(msg)
     {
         const getList = await ArrayGroup.findOne({ listName: msg.channel }).exec();
-        ArrayGroup.findOneAndUpdate({ listName: msg.channel }, { userGroup: getList.userGroup, listName: msg.channel, isOpen: msg.isOpen }, (err, result) => {
-            if(err)
+        if(msg.type == "restarUsuario")
+        {
+            let nuevaLista = [];
+            for(let i of getList.userGroup)
             {
-                console.log(err);
-            }else{
-                if(msg.isOpen)
+                if(i != msg.username)
                 {
-                    this.client.say(msg.channel.slice(13), `Lista Abierta!`);
-                    this.io.emit("listStatusServer", msg);
-                    return;  
-                }else
-                {
-                    this.client.say(msg.channel.slice(13), `Lista Cerrada!`);
-                    this.io.emit("listStatusServer", msg);
-                    return;
+                    nuevaLista.push(i);
                 }
             }
-        }); 
+            ArrayGroup.findOneAndUpdate({ listName: msg.channel }, { userGroup: nuevaLista, listName: msg.channel }, (err, result) => {
+                if(err)
+                {
+                    console.log(err);
+                }else{
+                    this.client.say(msg.channel.slice(13), `Usuario ${msg.username} restado a la lista :(`);
+                }
+            }).then(async () => {
+                let getListEmited = await ArrayGroup.findOne({ listName: msg.channel }).exec();
+                this.io.emit("transmition", getListEmited);
+                return;
+            });    
+        }
+        if(msg.type == "listStatus")
+        {
+            ArrayGroup.findOneAndUpdate({ listName: msg.channel }, { userGroup: getList.userGroup, listName: msg.channel, isOpen: msg.isOpen }, (err, result) => {
+                if(err)
+                {
+                    console.log(err);
+                }else{
+                    if(msg.isOpen)
+                    {
+                        this.client.say(msg.channel.slice(13), `Lista Abierta!`);
+                        this.io.emit("listStatusServer", msg);
+                        return;  
+                    }else
+                    {
+                        this.client.say(msg.channel.slice(13), `Lista Cerrada!`);
+                        this.io.emit("listStatusServer", msg);
+                        return;
+                    }
+                }
+            }); 
+        }
     }
     
     async Handle(message, channel, tags){
