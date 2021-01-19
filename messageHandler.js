@@ -152,6 +152,44 @@ class MessageHandler{
                     }
                 }
             }
+            if(msg.includes('-restarse'))
+            {
+                let estaEnLista = false;
+                for(let i  of getList.userGroup)
+                {
+                    if(i == tags.username)
+                    {
+                        estaEnLista = true;
+                    }
+                }
+                if(estaEnLista)
+                {
+                    let nuevaLista = [];
+                    for(let i of getList.userGroup)
+                    {
+                        if(i != tags.username)
+                        {
+                            nuevaLista.push(i);
+                        }
+                    }
+                    ArrayGroup.findOneAndUpdate({ listName: `ListaFortnite${streamer}` }, { userGroup: nuevaLista, listName: `ListaFortnite${streamer}` }, (err, result) => {
+                        if(err)
+                        {
+                            console.log(err);
+                        }else{
+                            this.client.say(channel, `Usuario ${tags.username} restado a la lista :(`);
+                        }
+                    }).then(async () => {
+                        let getListEmited = await ArrayGroup.findOne({ listName: `ListaFortnite${streamer}` }).exec();
+                        this.io.emit("transmition", getListEmited);
+                        return;
+                    });  
+                }
+                else
+                {
+                    this.client.say(channel, `No estás en la lista`);
+                }
+            }
             if(msg.includes('-sumarse')) // Funciona
             {
                 if(getList.isOpen)
