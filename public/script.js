@@ -69,6 +69,7 @@ socket.on('transmition', msg => {
             let usernameDel = `${i}`; 
             let botonSacar = document.createElement('div');
             botonSacar.innerText = 'x';
+            botonSacar.setAttribute("class", "botonX");
             botonSacar.addEventListener('click', () => {
                 let msg = {
                     type: "restarUsuario",
