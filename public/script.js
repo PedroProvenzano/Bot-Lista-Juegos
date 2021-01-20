@@ -89,6 +89,7 @@ socket.on('transmition', msg => {
 const botonSet = document.getElementById("botonSet");
 const inputSet = document.getElementById("inputSet");
 botonSet.addEventListener('click', () => {
+    ListaUsuarios.innerHTML = '';
     channel = `ListaFortnite${inputSet.value.toLowerCase()}`;
     localStorage.setItem("channel", channel);
     streamTitle.innerText = `Fila de ${inputSet.value}`;
