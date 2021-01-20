@@ -45,13 +45,20 @@ h2{
     align-items: center;
     text-align: center;
 }
-.user{
+.contUser{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+
+}
+.user{
+    width: 80%;
     font-size: 2.4vh;
     padding: 1vh; 
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 .botonX{
@@ -71,7 +78,7 @@ h2{
     cursor: pointer;
     background-color: rgba(255, 134, 134, 0.432);
 }
-.user:nth-of-type(2n)
+.contUser:nth-of-type(2n)
 {
     background-color: rgba(255, 255, 255, 0.096);
 }
@@ -79,6 +86,9 @@ h2{
     width: 100%;
     height: 450px;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 input{
     font-size: 2vh;

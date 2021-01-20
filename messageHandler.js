@@ -27,7 +27,7 @@ class MessageHandler{
                 {
                     console.log(err);
                 }else{
-                    this.client.say(msg.channel.slice(13), `Usuario ${msg.username} restado a la lista :(`);
+                    console.log("Usuario eliminado");
                 }
             }).then(async () => {
                 let getListEmited = await ArrayGroup.findOne({ listName: msg.channel }).exec();

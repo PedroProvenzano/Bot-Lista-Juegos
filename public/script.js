@@ -63,6 +63,8 @@ socket.on('transmition', msg => {
         ListaUsuarios.innerHTML = '';
         for(let i of msg.userGroup)
         {
+            let contDiv = document.createElement('div');
+            contDiv.setAttribute('class','contUser');
             let div = document.createElement('div');
             div.setAttribute('class', 'user');
             div.innerHTML = `${i}`;
@@ -79,7 +81,8 @@ socket.on('transmition', msg => {
                 socket.emit('restarUsuario', msg);
             });
             div.appendChild(botonSacar);
-            ListaUsuarios.appendChild(div);
+            contDiv.appendChild(div);
+            ListaUsuarios.appendChild(contDiv);
         }
     }
 });
