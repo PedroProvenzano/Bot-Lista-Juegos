@@ -198,7 +198,7 @@ class MessageHandler{
                     return;
                 }
                 else{
-                    this.client.say(msg.channel.slice(13), `Usuario ${msg.userDel} te toca!`);
+                    this.client.say(msg.channel.slice(13), `${msg.userDel} te toca, manifiestate! OhMyDog `);
                     return;
                 }
             });
