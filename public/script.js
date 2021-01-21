@@ -356,34 +356,34 @@ socket.on('newTokenResponse', response => {
             switch(response.event)
             {
                 case 'closingList':
-                    let message = {
+                    let msgClos = {
                         type: "listStatus",
                         channel: channel,
                         isOpen: false,
                         token: accessToken,
                         event: 'closingList'
                     }
-                    socket.emit('listStatus', message);
+                    socket.emit('listStatus', msgClos);
                 break;
                 case 'openingList':
-                    let message = {
+                    let msgOp = {
                         type: "listStatus",
                         channel: channel,
                         isOpen: true,
                         token: accessToken,
                         event: 'openingList'
                     }
-                    socket.emit('listStatus', message);
+                    socket.emit('listStatus', msgOp);
                 break;
                 case 'removeUser':
-                    let msg = {
+                    let msgRem = {
                         type: "restarUsuario",
                         username: response.usernameDel,
                         channel: channel,
                         token: accessToken,
                         event: 'removeUser'
                     }
-                    socket.emit('restarUsuario', msg);
+                    socket.emit('restarUsuario', msgRem);
                 break;
                 default:
                 break;
