@@ -434,7 +434,8 @@ const buttonUpdate = document.getElementById("button-update");
 
 buttonUpdate.addEventListener('click', () => {
     let msgUpdate = {
-        type: 'update'
+        type: 'update',
+        channel: channel
     }
     socket.emit('listStatus', msgUpdate);
 });
