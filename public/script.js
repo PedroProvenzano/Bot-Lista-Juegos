@@ -1,6 +1,5 @@
 var socket = io();
 
-const { response } = require("express");
 
 // DOM
 const ListaUsuarios = document.getElementById("listContainer");
