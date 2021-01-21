@@ -139,7 +139,7 @@ class MessageHandler{
                 const tokenDB = await Token.findOne({ token: refreshedAccessToken }).exec();
                 if(tokenDB == null)
                 {
-                    refreshedToken = new Token({
+                    let refreshedToken = new Token({
                         token: refreshedAccessToken
                     });
                     refreshedToken.save()
