@@ -192,7 +192,7 @@ class MessageHandler{
                         msg: `err`,
                         username: msg.channel,
                         event: msg.event,
-                        usernameDel: msg.userDel
+                        userDel: msg.userDel
                     }
                     this.io.emit('getNewToken', response);
                     return;

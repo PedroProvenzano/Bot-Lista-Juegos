@@ -336,7 +336,7 @@ socket.on('loginResponse', response => {
 });
 
 // Funcion para conseguir nueva token
-async function getNewToken(event, userDel = 0)
+async function getNewToken(event, userDel)
 {
     let msg = {
         type: 'newToken',
@@ -379,7 +379,7 @@ socket.on('newTokenResponse', response => {
                 case 'removeUser':
                     let msgRem = {
                         type: "restarUsuario",
-                        userDel: response.usernameDel,
+                        userDel: response.userDel,
                         channel: channel,
                         token: accessToken,
                         event: 'removeUser'
@@ -400,7 +400,7 @@ socket.on('getNewToken', response => {
     if(response.username == channel)
     {
         console.log('Getting new token...');
-        getNewToken(response.event, response.usernameDel);
+        getNewToken(response.event, response.userDel);
     }
 });
 
