@@ -221,6 +221,12 @@ class MessageHandler{
                 }
             })
         }
+        if(msg.type == "update")
+        {
+            let getListEmited = await ArrayGroup.findOne({ listName: msg.channel }).exec();
+            this.io.emit("transmition", getListEmited);
+            return;
+        }
         // Estado de lista
         if(msg.type == "listStatus")
         {

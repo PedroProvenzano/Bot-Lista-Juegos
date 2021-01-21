@@ -428,3 +428,13 @@ socket.on('logoutResponse', response => {
         }
     }
 });
+
+// boton de update
+const buttonUpdate = document.getElementById("button-update");
+
+buttonUpdate.addEventListener('click', () => {
+    let msgUpdate = {
+        type: 'update'
+    }
+    socket.emit('listStatus', msgUpdate);
+});
