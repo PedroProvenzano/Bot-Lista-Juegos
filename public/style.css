@@ -285,4 +285,8 @@ button{
     border-radius: 5%;
     padding: 1.2rem;
     margin-top: 1rem;
+    user-select: none;
+}
+#button-logout:hover{
+    cursor: pointer;
 }

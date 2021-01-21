@@ -354,7 +354,7 @@ socket.on('newTokenResponse', response => {
     }
 });
 socket.on('getNewToken', response => {
-    if(msg.username == channel)
+    if(response.username == channel)
     {
         console.log('Getting new token...');
         getNewToken();
