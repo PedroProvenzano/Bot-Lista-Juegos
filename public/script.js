@@ -265,6 +265,7 @@ botonRegistroCrearCuenta.addEventListener('click', () => {
         username: userName,
         password: passWord
     }
+    consolaCrearCuenta.innerText = `Creando cuenta...`;
     socket.emit('listStatus', msg);
 });
 

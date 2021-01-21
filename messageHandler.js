@@ -68,10 +68,11 @@ class MessageHandler{
         {
             // Buscar usuarios en la base de datos
             const userCheck = await ClientUser.find({ username: msg.username }).exec();
-
+            console.log(`Usuario encontrado: ${userCheck}`);
             // PlaceHolder
             if(!userCheck[0]){
                 userCheck[0] = [{ username: "boop boop", password: "baap baap"}];
+                console.log('User placeholder');
             }
 
             // Check si ya existe el usuario
@@ -83,6 +84,7 @@ class MessageHandler{
                     sts: false
                 };
                 this.io.emit("registerResponse", response);
+                console.log(`Enviado error de usuario ${msg.username} existente`)
                 return
             }
             // Encriptado 
@@ -99,6 +101,7 @@ class MessageHandler{
                     username: msg.username,
                     sts: true
                 };
+                console.log('Enviando que usuario ' + msg.username + ' se creo correctamente');
                 this.io.emit("registerResponse", response);
             })
             .catch(err =>{
@@ -107,6 +110,7 @@ class MessageHandler{
                     username: msg.username,
                     sts: false
                 };
+                console.log("enviando error final");
                 this.io.emit("registerResponse", response);
             });
         }
