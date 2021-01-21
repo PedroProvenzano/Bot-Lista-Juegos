@@ -52,7 +52,7 @@ class MessageHandler{
                 let userForToken = {
                     username: msg.username
                 }
-                const accessToken = jwt.sign(userForToken, process.env.SECRET_PASSWORD_JWT, { expiresIn: '15s' });
+                const accessToken = jwt.sign(userForToken, process.env.SECRET_PASSWORD_JWT, { expiresIn: '4h' });
                 console.log("Dando nueva token a usuario " + msg.username);
                 let response = {
                     msg: `Nueva token enviada`,
@@ -135,7 +135,7 @@ class MessageHandler{
                 let userForToken = {
                     username: user.username
                 }
-                const accessToken = jwt.sign(userForToken, process.env.SECRET_PASSWORD_JWT, { expiresIn: '15s' });
+                const accessToken = jwt.sign(userForToken, process.env.SECRET_PASSWORD_JWT, { expiresIn: '4h' });
                 const refreshedAccessToken = await jwt.sign(userForToken, process.env.REFRESH_PASSWORD_JWT);
 
                 const tokenDB = await Token.findOne({ token: refreshedAccessToken }).exec();
