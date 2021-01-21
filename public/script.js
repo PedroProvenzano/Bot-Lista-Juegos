@@ -259,7 +259,7 @@ botonRegistroCrearCuenta.addEventListener('click', () => {
         inputCrearCuentaPassword.value = '';
         return;
     }
-    channel = userName;
+    username = userName;
     let msg = {
         type: 'register',
         username: userName,
@@ -382,7 +382,7 @@ const botonLogout = document.getElementById("button-logout");
 botonLogout.addEventListener('click', () => {
     let msg = {
         type: "logout",
-        authToken: authToken,
+        authToken: authAccessToken,
         username: username
     }
     socket.emit('listStatus', msg);

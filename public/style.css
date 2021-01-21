@@ -290,3 +290,9 @@ button{
     width: 15vh; 
     background-color: rgba(123, 255, 141, 0.808);
 }
+#button-logout{
+    border: 2px solid white;
+    background-color: rgb(255, 0, 0);
+    padding: 1.2rem;
+    margin-top: 1rem;
+}
