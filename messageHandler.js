@@ -211,7 +211,7 @@ class MessageHandler{
                         {
                             console.log(err);
                         }else{
-                            console.log("Usuario eliminado");
+                            console.log(`Usuario ${msg.userDel} eliminado`);
                         }
                     }).then(async () => {
                         let getListEmited = await ArrayGroup.findOne({ listName: msg.channel }).exec();
