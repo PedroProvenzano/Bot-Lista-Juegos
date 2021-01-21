@@ -379,7 +379,7 @@ socket.on('newTokenResponse', response => {
                 case 'removeUser':
                     let msgRem = {
                         type: "restarUsuario",
-                        username: response.usernameDel,
+                        userDel: response.usernameDel,
                         channel: channel,
                         token: accessToken,
                         event: 'removeUser'
