@@ -102,7 +102,7 @@ socket.on('transmition', msg => {
             botonSacar.addEventListener('click', () => {
                 let msg = {
                     type: "restarUsuario",
-                    username: usernameDel,
+                    userDel: usernameDel,
                     channel: channel,
                     token: accessToken,
                     event: 'removeUser'
@@ -336,13 +336,14 @@ socket.on('loginResponse', response => {
 });
 
 // Funcion para conseguir nueva token
-async function getNewToken(event)
+async function getNewToken(event, userDel = 0)
 {
     let msg = {
         type: 'newToken',
         username: username,
         token: authAccessToken,
-        event: event
+        event: event,
+        userDel: userDel
     }
     socket.emit('listStatus', msg);
 }
@@ -399,7 +400,7 @@ socket.on('getNewToken', response => {
     if(response.username == channel)
     {
         console.log('Getting new token...');
-        getNewToken(response.event);
+        getNewToken(response.event, response.usernameDel);
     }
 });
 

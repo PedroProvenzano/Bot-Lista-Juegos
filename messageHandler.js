@@ -58,7 +58,9 @@ class MessageHandler{
                     msg: `Nueva token enviada`,
                     sts: true,
                     username: msg.username,
-                    token: accessToken
+                    token: accessToken,
+                    event: msg.event,
+                    userDel: msg.userDel
                 };
                 this.io.emit('newTokenResponse', response);
             })
@@ -179,6 +181,7 @@ class MessageHandler{
             this.io.emit('logoutResponse', response);
         }
         const getList = await ArrayGroup.findOne({ listName: msg.channel }).exec();
+        // Restar Usuario
         if(msg.type == "restarUsuario")
         {
             jwt.verify(msg.token, process.env.SECRET_PASSWORD_JWT, (err, user) => {
@@ -189,7 +192,7 @@ class MessageHandler{
                         msg: `err`,
                         username: msg.channel,
                         event: msg.event,
-                        usernameDel: msg.username
+                        usernameDel: msg.userDel
                     }
                     this.io.emit('getNewToken', response);
                     return;
@@ -198,7 +201,7 @@ class MessageHandler{
                     let nuevaLista = [];
                     for(let i of getList.userGroup)
                     {
-                        if(i != msg.username)
+                        if(i != msg.userDel)
                         {
                             nuevaLista.push(i);
                         }
@@ -218,6 +221,7 @@ class MessageHandler{
                 }
             })
         }
+        // Estado de lista
         if(msg.type == "listStatus")
         {
             jwt.verify(msg.token, process.env.SECRET_PASSWORD_JWT, (err, user) => {
@@ -227,7 +231,8 @@ class MessageHandler{
                         sts: false,
                         msg: `err`,
                         username: msg.channel,
-                        event: msg.event
+                        event: msg.event,
+                        usernameDel: 0
                     }
                     this.io.emit('getNewToken', response);
                     return;
