@@ -6,8 +6,10 @@ Bot de Twitch para armar listas de juegos
 Ingresar a este link:
 https://bot-twitch-lista-juegos.herokuapp.com/
 
-En donde pide nombre del canal ingresar el nombre de tu canal de twitch y tocar en SET.
-Despues cuando alguien se sume a la lista va a aparecer en pantalla.
+## Ahora cuenta con sistema de login!
+La primera vez que ingresamos hay que crear una cuenta, el nombre de usuario tiene que coincidir con el nombre de tu canal.
+### AVISO, LA CONTRASEÑA NO TIENE QUE SER LA DE TU CANAL, crea una contraseña alternativa, solo sirve para esta pagina
+( de todos modos las contraseñas son encriptadas y no pueden ser vistas por nadie, eso incluye al programador )
 
 
 ## Comandos del bot:
@@ -50,6 +52,10 @@ Con este comando el bot muestra la lista de jugadores
 
 
 ## Plan a futuro cercano:
+```diff
++ Completado
+```
+- Crear sistema de login con contraseña para que solo el streamer pueda entrar al cliente de su lista
 ```diff
 + Completado
 ```
