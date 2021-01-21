@@ -136,7 +136,7 @@ body{
 /* Seccion Contenido */
 .contenido{
     width: 100%;
-    display: none; /*flex;*/
+    display: none;/*flex;*/
     flex-direction: column;
     align-items: center;
 }
@@ -201,7 +201,14 @@ h2{
     justify-content: space-between;
     align-items: center;
 }
-.botonX{
+.contenedor-botones-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 20%;
+}
+.botonX,
+.alert{
     background-color: rgba(0, 0, 0, 0.171);
     display: flex;
     flex-direction: column;
@@ -214,7 +221,8 @@ h2{
     border-radius: 20%;
     transition: all 200ms;
 }
-.botonX:hover{
+.botonX:hover,
+.alert:hover{
     cursor: pointer;
     background-color: rgba(255, 134, 134, 0.432);
 }
@@ -240,6 +248,7 @@ button{
     font-size: 1.5rem;
 }
 .spam{
+    margin-top: 0.6rem;
     margin-left: 4px;
     font-size: 1rem;
     font-style: italic;

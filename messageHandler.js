@@ -181,6 +181,28 @@ class MessageHandler{
             this.io.emit('logoutResponse', response);
         }
         const getList = await ArrayGroup.findOne({ listName: msg.channel }).exec();
+        // Alertar Usuario
+        if(msg.type == "alertarUsuario")
+        {
+            jwt.verify(msg.token, process.env.SECRET_PASSWORD_JWT, (err, user) => {
+                if(err)
+                {
+                    let response = {
+                        sts: false,
+                        msg: `err`,
+                        username: msg.channel,
+                        event: msg.event,
+                        userDel: msg.userDel
+                    }
+                    this.io.emit('getNewToken', response);
+                    return;
+                }
+                else{
+                    this.client.say(msg.channel.slice(13), `Usuario ${msg.userAlt} te toca!`);
+                    return;
+                }
+            });
+        }
         // Restar Usuario
         if(msg.type == "restarUsuario")
         {
@@ -221,6 +243,7 @@ class MessageHandler{
                 }
             })
         }
+        // Actualizar lista
         if(msg.type == "update")
         {
             let getListEmited = await ArrayGroup.findOne({ listName: msg.channel }).exec();

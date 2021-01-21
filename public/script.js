@@ -92,6 +92,10 @@ socket.on('transmition', msg => {
         {
             let contDiv = document.createElement('div');
             contDiv.setAttribute('class','contUser');
+            // Contenedor botones
+            let buttonContainer = document.createElement('div');
+            buttonContainer.setAttribute('class', 'contenedor-botones-user');
+            // User Container
             let div = document.createElement('div');
             div.setAttribute('class', 'user');
             div.innerHTML = `${i}`;
@@ -109,7 +113,23 @@ socket.on('transmition', msg => {
                 }
                 socket.emit('restarUsuario', msg);
             });
-            div.appendChild(botonSacar);
+            buttonContainer.appendChild(botonSacar);
+            let imgAlert = document.createElement('img');
+            imgAlert.setAttribute('src', './alert.png');
+            imgAlert.setAttribute('class', 'alert');
+            imgAlert.setAttribute('id', 'button-alert');
+            imgAlert.addEventListener('click', () => {
+                let msg = {
+                    type: "alertarUsuario",
+                    userDel: usernameDel,
+                    channel: channel,
+                    token: accessToken,
+                    event: 'alertUser'
+                }
+                socket.emit('restarUsuario', msg); 
+            });
+            buttonContainer.appendChild(imgAlert);
+            div.appendChild(buttonContainer);
             contDiv.appendChild(div);
             ListaUsuarios.appendChild(contDiv);
         }
@@ -385,6 +405,16 @@ socket.on('newTokenResponse', response => {
                         event: 'removeUser'
                     }
                     socket.emit('restarUsuario', msgRem);
+                break;
+                case 'alertUser':
+                    let msgAlt = {
+                        type: "alertarUsuario",
+                        userDel: usernameDel,
+                        channel: channel,
+                        token: accessToken,
+                        event: 'alertUser'
+                    }
+                    socket.emit('restarUsuario', msgAlt); 
                 break;
                 default:
                 break;
