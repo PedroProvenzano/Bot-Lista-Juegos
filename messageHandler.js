@@ -187,7 +187,9 @@ class MessageHandler{
                     let response = {
                         sts: false,
                         msg: `err`,
-                        username: msg.channel
+                        username: msg.channel,
+                        event: msg.event,
+                        usernameDel: msg.username
                     }
                     this.io.emit('getNewToken', response);
                     return;
@@ -224,7 +226,8 @@ class MessageHandler{
                     let response = {
                         sts: false,
                         msg: `err`,
-                        username: msg.channel
+                        username: msg.channel,
+                        event: msg.event
                     }
                     this.io.emit('getNewToken', response);
                     return;

@@ -104,7 +104,8 @@ socket.on('transmition', msg => {
                     type: "restarUsuario",
                     username: usernameDel,
                     channel: channel,
-                    token: accessToken
+                    token: accessToken,
+                    event: 'removeUser'
                 }
                 socket.emit('restarUsuario', msg);
             });
@@ -158,7 +159,8 @@ botonLista.addEventListener('click', () => {
             type: "listStatus",
             channel: channel,
             isOpen: false,
-            token: accessToken
+            token: accessToken,
+            event: 'closingList'
         }
         socket.emit('listStatus', message);
     }
@@ -168,7 +170,8 @@ botonLista.addEventListener('click', () => {
             type: "listStatus",
             channel: channel,
             isOpen: true,
-            token: accessToken
+            token: accessToken,
+            event: 'openingList'
         }
         socket.emit('listStatus', message);
     }
@@ -262,6 +265,8 @@ socket.on('registerResponse', response => {
         if(response.sts)
         {
             cambioEscena(crearCuenta, contenedorCrearCuenta, login, contenedorLogin);
+            inputCrearCuentaPassword.value = '';
+            inputCrearCuentaUser.value = '';
             consolaLogin.innerText = response.msg;
         }
         else
@@ -312,7 +317,8 @@ socket.on('loginResponse', response => {
 
             login.style.display = "none";
             contenido.style.display = "flex";
-
+            inputLoginPassword.value = '';
+            inputLoginUsuario.value = '';
             let LoggedUser = {
                 authToken: authAccessToken,
                 accessToken: accessToken,
@@ -330,12 +336,13 @@ socket.on('loginResponse', response => {
 });
 
 // Funcion para conseguir nueva token
-async function getNewToken()
+async function getNewToken(event)
 {
     let msg = {
         type: 'newToken',
         username: username,
-        token: authAccessToken
+        token: authAccessToken,
+        event: event
     }
     socket.emit('listStatus', msg);
 }
@@ -346,6 +353,41 @@ socket.on('newTokenResponse', response => {
         {
             console.log('New token got...');
             accessToken = response.token; 
+            switch(response.event)
+            {
+                case 'closingList':
+                    let message = {
+                        type: "listStatus",
+                        channel: channel,
+                        isOpen: false,
+                        token: accessToken,
+                        event: 'closingList'
+                    }
+                    socket.emit('listStatus', message);
+                break;
+                case 'openingList':
+                    let message = {
+                        type: "listStatus",
+                        channel: channel,
+                        isOpen: true,
+                        token: accessToken,
+                        event: 'openingList'
+                    }
+                    socket.emit('listStatus', message);
+                break;
+                case 'removeUser':
+                    let msg = {
+                        type: "restarUsuario",
+                        username: response.usernameDel,
+                        channel: channel,
+                        token: accessToken,
+                        event: 'removeUser'
+                    }
+                    socket.emit('restarUsuario', msg);
+                break;
+                default:
+                break;
+            }
         }
         else
         {
@@ -357,7 +399,7 @@ socket.on('getNewToken', response => {
     if(response.username == channel)
     {
         console.log('Getting new token...');
-        getNewToken();
+        getNewToken(response.event);
     }
 });
 
@@ -381,7 +423,7 @@ socket.on('logoutResponse', response => {
             localStorage.removeItem('LoggedUser');
             contenido.style.display = "none";
             intro.style.display = "flex";
-            contenedorIntro.style.marginTop = "0";
+            contenedorIntro.style.marginTop = "2rem";
         }
     }
 });
