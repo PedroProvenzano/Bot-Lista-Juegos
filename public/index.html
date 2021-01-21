@@ -8,45 +8,101 @@
     <title>Bot de Fila</title>
 </head>
 <body>
-    <div class="table" id="table">
-        <div class="titleContainer">
-            <h2 id="streamTitle"> Fila </h2>
-        </div>
-        <div class="listContainer" id="listContainer">
 
+    <section class="intro" id="intro">
+        <div class="contenedor-intro" id="contenedor-intro">
+            <h3 class="texto-intro"> ¿Tenés cuenta? </h3>
+            <div class="contenedor-intro-botones" id="contenedor-intro-botones">
+                <div class="boton-intro-si" id="boton-intro-si">
+                    Sí
+                </div>
+                <div class="boton-intro-no" id="boton-intro-no">
+                    No
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="formulario">
-        <input class="inputSet" type="text" placeholder="Nombre del Canal" id="inputSet">
-        <div id="botonSet" class="boton botonSet">Connect</div>
-    </div>
-    <div class="spam">
-        <p>Hecho por Mrklus</p>
-    </div>
-    <div class="customCont" id="customCont">
-        <div class="colorCont">
-            <p>Color Lista</p>
-            <input type="color" id="colorLista">
+    </section>
+
+    <section class="crear-cuenta" id="crear-cuenta">
+        <div class="contenedor-crear-cuenta" id="contenedor-crear-cuenta">
+            <h3 class="texto-intro"> Crear cuenta </h3>
+            <input type="text" placeholder="Nombre del canal" id="input-crear-cuenta-usuario">
+            <input type="password" placeholder="Contraseña" id="input-crear-cuenta-password">
+            <div class="contenedor-botones-log">
+                <div class="boton-log" id="boton-volver-crear-cuenta">
+                    Volver
+                </div>
+                <div class="boton-log" id="boton-crear-cuenta">
+                    Registrar
+                </div>
+            </div>
+            <p>AVISO: la contraseña no es la de twitch, es propia de esta pagina</p>
+            <p class="console" id="console-crear-cuenta"></p>
         </div>
-        <div class="colorCont">
-            <p>Color Borde</p>
-            <input type="color" id="colorBorde">
+    </section>
+
+    <section class="login" id="login">
+        <div class="contenedor-login" id="contenedor-login">
+            <h3 class="texto-intro"> Iniciar sesion </h3>
+            <input type="text" placeholder="Nombre del canal" id="input-login-usuario">
+            <input type="password" placeholder="Contraseña" id="input-login-password">
+            <div class="contenedor-botones-log">
+                <div class="boton-log" id="boton-volver-login">
+                    Volver
+                </div>                
+                <div class="boton-log" id="boton-login">
+                    Conectar
+                </div>
+            </div>
+            <p>AVISO: la contraseña no es la de twitch, es propia de esta pagina</p>
+            <p class="console" id="console-login"></p>
         </div>
-        <div class="colorCont">
-            <p>Color Fuente</p>
-            <input type="color" id="colorFuente">
+    </section>
+
+    <section class="contenido" id="contenido">
+        <div class="table" id="table">
+            <div class="titleContainer">
+                <h2 id="streamTitle"> Fila </h2>
+            </div>
+            <div class="listContainer" id="listContainer">
+    
+            </div>
         </div>
-        <div class="colorCont">
-            <p>Color Fondo</p>
-            <input type="color" id="colorFondo">
+        <div class="formulario">
+            <input class="inputSet" type="text" placeholder="Nombre del Canal" id="inputSet">
+            <div id="botonSet" class="boton botonSet">Connect</div>
         </div>
-        <div class="colorCont">
-            <div class="boton buttonColors" id="buttonColors">Set</div>
+        <div class="spam">
+            <p>Hecho por Mrklus</p>
         </div>
-        <div class="colorCont">
-            <div class="boton buttonList" id="buttonList">Lista Abierta</div>
+        <div class="customCont" id="customCont">
+            <div class="colorCont">
+                <p>Color Lista</p>
+                <input type="color" id="colorLista">
+            </div>
+            <div class="colorCont">
+                <p>Color Borde</p>
+                <input type="color" id="colorBorde">
+            </div>
+            <div class="colorCont">
+                <p>Color Fuente</p>
+                <input type="color" id="colorFuente">
+            </div>
+            <div class="colorCont">
+                <p>Color Fondo</p>
+                <input type="color" id="colorFondo">
+            </div>
+            <div class="colorCont">
+                <div class="boton buttonColors" id="buttonColors">Set</div>
+            </div>
+            <div class="colorCont">
+                <div class="boton buttonList" id="buttonList">Lista Abierta</div>
+            </div>
         </div>
-    </div>
+        <div class="botonSet" id="button-logout">
+            LogOut
+        </div>
+    </section>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./script.js"></script>
 </body>
