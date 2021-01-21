@@ -20,7 +20,7 @@ const botonLista = document.getElementById("buttonList");
 // Escenas
 const contenido = document.getElementById("contenido");
 const intro = document.getElementById("intro");
-
+const contenedorIntro = document.getElementById("contenedor-intro");
 
 
 let clicked = true;
@@ -115,17 +115,6 @@ socket.on('transmition', msg => {
     }
 });
 
-/*
-const botonSet = document.getElementById("botonSet");
-const inputSet = document.getElementById("inputSet");
-botonSet.addEventListener('click', () => {
-    ListaUsuarios.innerHTML = '';
-    channel = `ListaFortnite${inputSet.value.toLowerCase()}`;
-    localStorage.setItem("channel", channel);
-    streamTitle.innerText = `Fila de ${inputSet.value}`;
-    inputSet.value = "";
-});
-*/
 
 if(localStorage.save)
 {
@@ -138,8 +127,6 @@ if(localStorage.save)
     table.style.borderColor = load.saveBorde;
     customCont.style.borderColor = load.saveBorde;
     html.style.backgroundColor = load.saveFondo; 
-    botonSet.style.color = load.saveColor;
-    botonSet.style.borderColor = load.saveBorde;
     buttonColors.style.color = load.saveColor;
     buttonColors.style.borderColor = load.saveBorde;
     botonLista.style.borderColor = load.saveBorde;
@@ -155,11 +142,9 @@ buttonColors.addEventListener('click', () => {
     table.style.color = colorFuente.value;
     customCont.style.backgroundColor = colorLista.value;
     customCont.style.color = colorFuente.value;
-    botonSet.style.color = colorFuente.value;
     buttonColors.style.color = colorFuente.value;
     buttonColors.style.borderColor = colorBorde.value;
     table.style.borderColor = colorBorde.value;
-    botonSet.style.borderColor = colorBorde.value;
     customCont.style.borderColor = colorBorde.value;
     html.style.backgroundColor = colorFondo.value;    
     let save = JSON.stringify(perfilGuardado)
@@ -199,7 +184,7 @@ const botonIntroNo = document.getElementById("boton-intro-no");
 // Escenas
 
 
-const contenedorIntro = document.getElementById("contenedor-intro");
+
 // Crear cuenta
 const crearCuenta = document.getElementById("crear-cuenta");
 const contenedorCrearCuenta = document.getElementById("contenedor-crear-cuenta");
@@ -396,6 +381,7 @@ socket.on('logoutResponse', response => {
             localStorage.removeItem('LoggedUser');
             contenido.style.display = "none";
             intro.style.display = "flex";
+            contenedorIntro.style.marginTop = "0";
         }
     }
 });

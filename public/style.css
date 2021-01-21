@@ -217,22 +217,10 @@ input{
     font-size: 2vh;
     height: 50px;
 }
-.inputSet{
-    width: 80vh;
-}
 button{
     width: 100px;
     height: 50px;
     font-size: 1.5rem;
-}
-.formulario{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    margin-top: 2rem;
-    width: 50vh;
 }
 .spam{
     margin-left: 4px;
@@ -291,8 +279,10 @@ button{
     background-color: rgba(123, 255, 141, 0.808);
 }
 #button-logout{
-    border: 2px solid white;
+    border: 2px solid rgb(0, 0, 0);
     background-color: rgb(255, 0, 0);
+    font-weight: 700;
+    border-radius: 5%;
     padding: 1.2rem;
     margin-top: 1rem;
 }
