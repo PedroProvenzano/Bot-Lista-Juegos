@@ -67,15 +67,15 @@ class MessageHandler{
         if(msg.type == "register")
         {
             // Buscar usuarios en la base de datos
-            const userCheck = await ClientUser.findOne({ username: msg.username }).exec();
+            const userCheck = await ClientUser.find({ username: msg.username }).exec();
 
             // PlaceHolder
-            if(!userCheck){
-                userCheck = [{ username: "boop boop", password: "baap baap"}];
+            if(!userCheck[0]){
+                userCheck[0] = [{ username: "boop boop", password: "baap baap"}];
             }
 
             // Check si ya existe el usuario
-            if (msg.username == userCheck.username){
+            if (msg.username == userCheck[0].username){
                 // Respuesta
                 let response = {
                     msg: `Usuario ${msg.username} ya existe`,
