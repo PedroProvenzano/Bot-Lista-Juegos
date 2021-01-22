@@ -409,7 +409,7 @@ socket.on('newTokenResponse', response => {
                 case 'alertUser':
                     let msgAlt = {
                         type: "alertarUsuario",
-                        userDel: usernameDel,
+                        userDel: response.userDel,
                         channel: channel,
                         token: accessToken,
                         event: 'alertUser'
