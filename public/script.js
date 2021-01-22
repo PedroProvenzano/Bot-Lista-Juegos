@@ -42,7 +42,6 @@ if(localStorage.LoggedUser)
     username = loadData.username;
     accessToken = loadData.accessToken;
     authAccessToken = loadData.authToken;
-    clientID = loadData.clientID;
     intro.style.display = "none";
     contenido.style.display = "flex";
 }
