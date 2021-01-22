@@ -1,5 +1,10 @@
 var socket = io();
 
+// Genera ID unica
+const crypto = require('crypto');
+let uniqueID = crypto.randomBytes(12).toString('hex');
+console.log(uniqueID);
+
 
 // DOM
 const ListaUsuarios = document.getElementById("listContainer");
@@ -28,6 +33,7 @@ let channel = "";
 let username = "";
 let accessToken = "";
 let authAccessToken = "";
+
 
 if(localStorage.LoggedUser)
 {

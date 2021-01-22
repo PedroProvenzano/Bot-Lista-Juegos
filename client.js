@@ -25,9 +25,9 @@ class Connection {
             this.messageHandler.Handle(message, channel, tags);
         });
     }
-    async ListenHandleIo(msg, socket)
+    async ListenHandleIo(msg)
     {
-        this.messageHandler.HandleDataBase(msg, socket);
+        this.messageHandler.HandleDataBase(msg);
     }
 }
 
