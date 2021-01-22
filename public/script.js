@@ -1,9 +1,9 @@
 var socket = io();
 
 // Genera ID unica
-const crypto = require('crypto');
-let uniqueID = crypto.randomBytes(12).toString('hex');
-console.log(uniqueID);
+let arrayID = new Uint32Array(3);
+let cryptedID = window.crypto.getRandomValues(arrayID);
+let clientID = cryptedID.toString('hex');
 
 
 // DOM
