@@ -60,7 +60,8 @@ class MessageHandler{
                     username: msg.username,
                     token: accessToken,
                     event: msg.event,
-                    userDel: msg.userDel
+                    userDel: msg.userDel,
+                    clientID: msg.clientID
                 };
                 this.io.emit('newTokenResponse', response);
             })
@@ -83,7 +84,8 @@ class MessageHandler{
                 let response = {
                     msg: `Usuario ${msg.username} ya existe`,
                     username: msg.username,
-                    sts: false
+                    sts: false,
+                    clientID: msg.clientID
                 };
                 this.io.emit("registerResponse", response);
                 console.log(`Enviado error de usuario ${msg.username} existente`)
@@ -101,7 +103,8 @@ class MessageHandler{
                 let response = {
                     msg: `Usuario ${msg.username} creado correctamente`,
                     username: msg.username,
-                    sts: true
+                    sts: true,
+                    clientID: msg.clientID
                 };
                 console.log('Enviando que usuario ' + msg.username + ' se creo correctamente');
                 this.io.emit("registerResponse", response);
@@ -110,7 +113,8 @@ class MessageHandler{
                 let response = {
                     msg: err,
                     username: msg.username,
-                    sts: false
+                    sts: false,
+                    clientID: msg.clientID
                 };
                 console.log("enviando error final");
                 this.io.emit("registerResponse", response);
@@ -125,7 +129,8 @@ class MessageHandler{
                 let response = {
                     msg: `Usuario ${msg.username} no existe`,
                     username: msg.username,
-                    sts: false
+                    sts: false,
+                    clientID: msg.clientID
                 }
                 this.io.emit('loginResponse', response);
                 return;
@@ -155,7 +160,8 @@ class MessageHandler{
                     username: msg.username,
                     accessToken: accessToken,
                     refreshedToken: refreshedAccessToken,
-                    sts: true
+                    sts: true,
+                    clientID: msg.clientID
                 }
                 this.io.emit('loginResponse', response);
             }
@@ -176,7 +182,8 @@ class MessageHandler{
             });
             let response = {
                 username: msg.username,
-                sts: true
+                sts: true,
+                clientID: msg.clientID
             }
             this.io.emit('logoutResponse', response);
         }

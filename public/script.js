@@ -1,3 +1,5 @@
+const { client } = require("tmi.js");
+
 var socket = io();
 
 // Genera ID unica
@@ -42,6 +44,7 @@ if(localStorage.LoggedUser)
     username = loadData.username;
     accessToken = loadData.accessToken;
     authAccessToken = loadData.authToken;
+    clientID = loadData.clientID;
     intro.style.display = "none";
     contenido.style.display = "flex";
 }
@@ -277,7 +280,8 @@ botonRegistroCrearCuenta.addEventListener('click', () => {
     let msg = {
         type: 'register',
         username: userName,
-        password: passWord
+        password: passWord,
+        clientID: clientID
     }
     consolaCrearCuenta.innerText = `Creando cuenta...`;
     socket.emit('listStatus', msg);
@@ -285,7 +289,7 @@ botonRegistroCrearCuenta.addEventListener('click', () => {
 
 // Socket register
 socket.on('registerResponse', response => {
-    if(response.username == username)
+    if(response.clientID == clientID)
     {
         // Check respuesta del servidor
         if(response.sts)
@@ -324,13 +328,14 @@ botonRegistroLogin.addEventListener('click', () => {
         type: 'login',
         username: userName,
         password: passWord,
+        clientID: clientID
     }
     socket.emit('listStatus', msg);
 });
 
 // Socket login
 socket.on('loginResponse', response => {
-    if(response.username == username)
+    if(response.clientID == clientID)
     {
         if(response.sts)
         {
@@ -350,7 +355,8 @@ socket.on('loginResponse', response => {
                 accessToken: accessToken,
                 username: username,
                 channel: channel,
-                loggedIn: true
+                loggedIn: true,
+                clientID: clientID
             }
             let saveUser = JSON.stringify(LoggedUser);
             localStorage.setItem('LoggedUser', saveUser);
@@ -369,12 +375,13 @@ async function getNewToken(event, userDel)
         username: username,
         token: authAccessToken,
         event: event,
-        userDel: userDel
+        userDel: userDel,
+        clientID: clientID
     }
     socket.emit('listStatus', msg);
 }
 socket.on('newTokenResponse', response => {
-    if(response.username == username)
+    if(response.clientID == clientID)
     {
         if(response.sts)
         {
@@ -447,13 +454,14 @@ botonLogout.addEventListener('click', () => {
     let msg = {
         type: "logout",
         authToken: authAccessToken,
-        username: username
+        username: username,
+        clientID: clientID
     }
     socket.emit('listStatus', msg);
 });
 // Socket Logout
 socket.on('logoutResponse', response => {
-    if(response.username == username)
+    if(response.clientID == clientID)
     {
         if(response.sts)
         {
