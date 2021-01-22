@@ -14,7 +14,7 @@ class MessageHandler{
         this.isOpen = true;
     }
     
-    async HandleDataBase(msg)
+    async HandleDataBase(msg, socket)
     {
         if(msg.type == "newToken")
         {

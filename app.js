@@ -21,14 +21,14 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
+  console.log('a user connected', socket);
 
-  socket.on('listStatus', (msg) => {
-    connection.ListenHandleIo(msg);
+  socket.on('listStatus', (msg, socket) => {
+    connection.ListenHandleIo(msg, socket);
   });
 
-  socket.on('restarUsuario', (msg) => {
-    connection.ListenHandleIo(msg);
+  socket.on('restarUsuario', (msg, socket) => {
+    connection.ListenHandleIo(msg, socket);
   });
 });
 
