@@ -100,8 +100,8 @@ socket.on('transmition', msg => {
             div.setAttribute('class', 'user');
             div.innerHTML = `${i}`;
             let usernameDel = `${i}`; 
-            let botonSacar = document.createElement('div');
-            botonSacar.innerText = 'x';
+            let botonSacar = document.createElement('img');
+            botonSacar.setAttribute('src', './equis.png');
             botonSacar.setAttribute("class", "botonX");
             botonSacar.addEventListener('click', () => {
                 let msg = {

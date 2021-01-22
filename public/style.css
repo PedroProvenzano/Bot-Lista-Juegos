@@ -136,7 +136,7 @@ body{
 /* Seccion Contenido */
 .contenido{
     width: 100%;
-    display: none;/*flex;*/
+    display: none;/* flex;*/
     flex-direction: column;
     align-items: center;
 }
