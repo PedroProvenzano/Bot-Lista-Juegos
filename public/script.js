@@ -1,5 +1,3 @@
-const { client } = require("tmi.js");
-
 var socket = io();
 
 // Genera ID unica
