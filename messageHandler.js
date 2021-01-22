@@ -52,7 +52,7 @@ class MessageHandler{
                 let userForToken = {
                     username: msg.username
                 }
-                const accessToken = jwt.sign(userForToken, process.env.SECRET_PASSWORD_JWT, { expiresIn: '4h' });
+                const accessToken = jwt.sign(userForToken, process.env.SECRET_PASSWORD_JWT, { expiresIn: '15s' });
                 console.log("Dando nueva token a usuario " + msg.username);
                 let response = {
                     msg: `Nueva token enviada`,
@@ -135,7 +135,7 @@ class MessageHandler{
                 let userForToken = {
                     username: user.username
                 }
-                const accessToken = jwt.sign(userForToken, process.env.SECRET_PASSWORD_JWT, { expiresIn: '4h' });
+                const accessToken = jwt.sign(userForToken, process.env.SECRET_PASSWORD_JWT, { expiresIn: '15s' });
                 const refreshedAccessToken = await jwt.sign(userForToken, process.env.REFRESH_PASSWORD_JWT);
 
                 const tokenDB = await Token.findOne({ token: refreshedAccessToken }).exec();
@@ -192,7 +192,8 @@ class MessageHandler{
                         msg: `err`,
                         username: msg.channel,
                         event: msg.event,
-                        userDel: msg.userDel
+                        userDel: msg.userDel,
+                        accessToken: msg.token
                     }
                     this.io.emit('getNewToken', response);
                     return;
@@ -214,7 +215,8 @@ class MessageHandler{
                         msg: `err`,
                         username: msg.channel,
                         event: msg.event,
-                        userDel: msg.userDel
+                        userDel: msg.userDel,
+                        accessToken: msg.token
                     }
                     this.io.emit('getNewToken', response);
                     return;
@@ -261,7 +263,8 @@ class MessageHandler{
                         msg: `err`,
                         username: msg.channel,
                         event: msg.event,
-                        usernameDel: 0
+                        usernameDel: 0,
+                        accessToken: msg.token
                     }
                     this.io.emit('getNewToken', response);
                     return;

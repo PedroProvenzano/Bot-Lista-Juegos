@@ -427,7 +427,7 @@ socket.on('newTokenResponse', response => {
     }
 });
 socket.on('getNewToken', response => {
-    if(response.username == channel)
+    if(response.accessToken == accessToken)
     {
         console.log('Getting new token...');
         getNewToken(response.event, response.userDel);
@@ -469,3 +469,4 @@ buttonUpdate.addEventListener('click', () => {
     }
     socket.emit('listStatus', msgUpdate);
 });
+
