@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected', socket);
+  console.log('a user connected', socket.id);
 
   socket.on('listStatus', (msg, socket) => {
     connection.ListenHandleIo(msg, socket);
