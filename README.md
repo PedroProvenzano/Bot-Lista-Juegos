@@ -55,6 +55,10 @@ Con este comando el bot muestra la lista de jugadores
 ```diff
 + Completado
 ```
+- Agregar un sistema para, desde el cliente, eliminar a los usuarios de la lista o alertarles que ya les toca
+```diff
++ Completado
+```
 - Crear sistema de login con contraseña para que solo el streamer pueda entrar al cliente de su lista
 ```diff
 + Completado
