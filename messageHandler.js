@@ -169,7 +169,8 @@ class MessageHandler{
                 let response = {
                     msg: `Contraseña incorrecta`,
                     username: msg.username,
-                    sts: false
+                    sts: false,
+                    clientID: msg.clientID
                 }
                 this.io.emit('loginResponse', response);
             }
