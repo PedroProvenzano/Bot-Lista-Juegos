@@ -26,6 +26,10 @@ const botonLista = document.getElementById("buttonList");
 const contenido = document.getElementById("contenido");
 const intro = document.getElementById("intro");
 const contenedorIntro = document.getElementById("contenedor-intro");
+const lobby = document.getElementById("lobby");
+const videoReaccion = document.getElementById("video-reaccion");
+const botonContenedorListaJuegos = document.getElementById("contenedor-lista-juego");
+const botonVideoReacciones = document.getElementById("contenedor-video-reaccion");
 
 
 let clicked = true;
@@ -344,7 +348,7 @@ socket.on('loginResponse', response => {
             streamTitle.innerText = `Fila de ${response.username}`;
 
             login.style.display = "none";
-            contenido.style.display = "flex";
+            lobby.style.display = "flex";
             inputLoginPassword.value = '';
             inputLoginUsuario.value = '';
             let LoggedUser = {
@@ -484,10 +488,7 @@ buttonUpdate.addEventListener('click', () => {
 // Seccion de lobby
 
 // DOM
-const lobby = document.getElementById("lobby");
-const videoReaccion = document.getElementById("video-reaccion");
-const botonContenedorListaJuegos = document.getElementById("contenedor-lista-juego");
-const botonVideoReacciones = document.getElementById("contenedor-video-reaccion");
+
 
 
 botonContenedorListaJuegos.addEventListener('click', () => {
