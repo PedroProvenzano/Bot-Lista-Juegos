@@ -48,7 +48,7 @@ body{
 
 /* Seccion Intro */
 .intro{
-    display: none; /* flex */
+    display: flex; 
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -134,7 +134,7 @@ body{
 
 /* Seccion Lobby */
 .lobby{
-    display: flex; /* none */
+    display: none;
     justify-content: center;
     align-items: center;
     transition: all 300ms;
