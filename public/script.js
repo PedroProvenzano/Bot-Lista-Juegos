@@ -22,6 +22,7 @@ const buttonColors = document.getElementById("buttonColors");
 // Botones
 const botonLista = document.getElementById("buttonList");
 const botonVolver = document.getElementById("boton-volver");
+const botonVolverVideo = document.getElementById("boton-volver-video");
 // Escenas
 const contenido = document.getElementById("contenido");
 const intro = document.getElementById("intro");
@@ -618,6 +619,9 @@ function getNextOne(array)
 
 botonVolver.addEventListener('click', () => {
     contenido.style.display = "none";
+    lobby.style.display = "flex";
+});
+botonVolverVideo.addEventListener("click", () => {
     videoReaccion.style.display = "none";
     lobby.style.display = "flex";
 });
