@@ -3,6 +3,8 @@ const { get } = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv/config');
+const fetch = require('node-fetch');
+let urlAPI = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=";
 const ArrayGroup = require('./Models/ArrayGroup');
 const ClientUser = require('./Models/ClientUser');
 const Token = require('./Models/Token');
@@ -16,6 +18,19 @@ class MessageHandler{
     
     async HandleDataBase(msg)
     {
+        if(msg.type == "getTitle")
+        {
+            fetch(urlAPI + msg.url.slice(32,43) + "&key=" + process.env.APIKEY)
+            .then(res => res.json())
+            .then((res) => {
+                let newMsg = {
+                    channel: msg.channel,
+                    title: res.items[0].snippet.title,
+                    url: msg.url
+                }
+                this.io.emit('TitleGot', newMsg);
+            });
+        }
         if(msg.type == "newToken")
         {
             // Token Checks
@@ -509,6 +524,16 @@ class MessageHandler{
                     }
                 }
                 this.client.say(channel, `La lista de jugadores es:${ListString}`);
+            }
+            if(msg.includes('-sr'))
+            {
+                let link = message.slice(4);
+                let msg = {
+                    url: link,
+                    channel:  channel
+                }
+                this.io.emit('newVideo', msg);
+                console.log('emmited new video to client ' + msg.channel);
             }
         }
     }

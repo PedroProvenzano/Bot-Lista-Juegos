@@ -30,6 +30,10 @@ io.on('connection', (socket) => {
   socket.on('restarUsuario', (msg) => {
     connection.ListenHandleIo(msg);
   });
+
+  socket.on('newOrder', (msg) => {
+    connection.ListenHandleIo(msg);
+  });
 });
 
 
