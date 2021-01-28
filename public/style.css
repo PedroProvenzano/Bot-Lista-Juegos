@@ -48,7 +48,7 @@ body{
 
 /* Seccion Intro */
 .intro{
-    display: flex;
+    display: none; /* flex */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -132,6 +132,39 @@ body{
     background-color: rgba(255, 184, 91, 0.904);
 }
 
+/* Seccion Lobby */
+.lobby{
+    display: flex; /* none */
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms;
+}
+
+.contenedor-lista-juego,
+.contenedor-video-reaccion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    margin-top: 10rem;
+    border: 5px dotted black;
+    padding: 2rem;
+    background-color: rgba(255, 184, 91, 0.904);
+    transition: all 300ms;
+}
+.contenedor-video-reaccion{
+    margin-left: 10rem;
+}
+.contenedor-lista-juego:hover,
+.contenedor-video-reaccion:hover{
+    cursor: pointer;
+    border-radius: 20%;
+}
+.lobbyTitle{
+    position: absolute;
+    top: 10vh;
+    left: 45vw;
+}
 
 /* Seccion Contenido */
 .contenido{
@@ -315,4 +348,10 @@ button{
 }
 #button-logout:hover{
     cursor: pointer;
+}
+
+
+/* Seccion video reaccion */
+.video-reaccion{
+    display: none;
 }

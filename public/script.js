@@ -481,3 +481,27 @@ buttonUpdate.addEventListener('click', () => {
     socket.emit('listStatus', msgUpdate);
 });
 
+// Seccion de lobby
+
+// DOM
+const lobby = document.getElementById("lobby");
+const videoReaccion = document.getElementById("video-reaccion");
+const botonContenedorListaJuegos = document.getElementById("contenedor-lista-juego");
+const botonVideoReacciones = document.getElementById("contenedor-video-reaccion");
+
+
+botonContenedorListaJuegos.addEventListener('click', () => {
+    lobby.style.opacity = "0";
+    setTimeout(() => {
+        contenido.style.display = "flex";
+        lobby.style.display = "none";
+    }, 300);
+});
+
+botonVideoReacciones.addEventListener('click', () => {
+    lobby.style.opacity = "0";
+    setTimeout(() => {
+        videoReaccion.style.display = "flex";
+        lobby.style.display = "none";
+    }, 300);
+});
