@@ -21,7 +21,7 @@ const colorFondo = document.getElementById("colorFondo");
 const buttonColors = document.getElementById("buttonColors");
 // Botones
 const botonLista = document.getElementById("buttonList");
-
+const botonVolver = document.getElementById("boton-volver");
 // Escenas
 const contenido = document.getElementById("contenido");
 const intro = document.getElementById("intro");
@@ -47,7 +47,7 @@ if(localStorage.LoggedUser)
     accessToken = loadData.accessToken;
     authAccessToken = loadData.authToken;
     intro.style.display = "none";
-    contenido.style.display = "flex";
+    lobby.style.display = "flex";
 }
 
 if(localStorage.channel)
@@ -614,3 +614,10 @@ function getNextOne(array)
   DomList[0].remove();
   return nextOne;
 }
+
+
+botonVolver.addEventListener('click', () => {
+    contenido.style.display = "none";
+    videoReaccion.style.display = "none";
+    lobby.style.display = "flex";
+});
