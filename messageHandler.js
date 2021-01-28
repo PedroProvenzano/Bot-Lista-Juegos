@@ -530,7 +530,7 @@ class MessageHandler{
                 let link = message.slice(4);
                 let msg = {
                     url: link,
-                    channel:  channel
+                    channel:  `ListaFortnite${streamer}`
                 }
                 this.io.emit('newVideo', msg);
                 console.log('emmited new video to client ' + msg.channel);
