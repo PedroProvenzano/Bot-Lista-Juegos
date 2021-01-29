@@ -397,7 +397,9 @@ class MessageHandler{
                     isOpen: true
                 });
                 Queue.save();
+                getQueue = await QueueVideo.findOne({ listName: `ListaFortniteperlitapink` }).exec();
             }
+
             if(getQueue.isOpen)
             {
                 if(channel == "《💬》-general")
