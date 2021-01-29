@@ -566,17 +566,6 @@ function agregarAQueue(queue)
         getAndPostVideo(msg.url);
         let toDelete = document.getElementById(`cont${newID}`);
         toDelete.remove();
-        let newArray = [];
-        for(let i of arrayQueue)
-        {
-            if(i != msg.url)
-            {
-            newArray.push(i);
-            }
-        }
-        arrayQueue = newArray;
-        });
-        arrayQueue.push(msg.url);
         contenedorLink.appendChild(parrafo);
         let equisIMG = document.createElement("img");
         equisIMG.setAttribute('src', './equis.png');
@@ -589,7 +578,7 @@ function agregarAQueue(queue)
             let newArray = [];
             for(let i of arrayQueue)
             {
-            if(i != msg.url)
+            if(i.url != msg.url)
             {
                 newArray.push(i);
             }
