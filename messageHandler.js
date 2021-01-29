@@ -347,7 +347,7 @@ class MessageHandler{
             {
                 console.log("enviando mensaje de discord");
                 let mensajeDisc = message.slice(4);
-                let nombreStrm = "mrklus";
+                let nombreStrm = "perlitapink";
                 let msg = {
                     url: mensajeDisc,
                     channel:  `ListaFortnite${nombreStrm}`
