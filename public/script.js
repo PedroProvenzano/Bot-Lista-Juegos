@@ -535,13 +535,13 @@ socket.on('TitleGot', async (msg) => {
     let newID = msg.title.replace(regex,"-");
     let contenedorLink = document.createElement('div');
     contenedorLink.setAttribute("class", "linkReproduccion");
-    contenedorLink.setAttribute('id', newID);
-    contenedorLink.innerHTML = `<p>${msg.title}</p>
-    <img src="./equis.png" alt="cruz" id="boton-link-cruz" class="cruz">
-    <img src="./alert.png" alt="alerta" id="boton-link-alerta" class="alert">`;
-    contenedorLink.addEventListener('click', () => {
+    contenedorLink.setAttribute('id', `cont${newID}`);
+    let parrafo = document.createElement('p');
+    parrafo.setAttribute('id', newID);
+    parrafo.innerText = msg.title;
+    parrafo.addEventListener('click', () => {
       getAndPostVideo(msg.url);
-      let toDelete = document.getElementById(newID);
+      let toDelete = document.getElementById(`cont${newID}`);
       toDelete.remove();
       let newArray = [];
       for(let i of arrayQueue)
@@ -554,8 +554,37 @@ socket.on('TitleGot', async (msg) => {
       arrayQueue = newArray;
     });
       arrayQueue.push(msg.url);
-      marcoListaReproduccion.appendChild(contenedorLink);
-  }
+      contenedorLink.appendChild(parrafo);
+    let equisIMG = document.createElement("img");
+    equisIMG.setAttribute('src', './equis.png');
+    equisIMG.setAttribute('alt', 'cruz');
+    equisIMG.setAttribute('id', 'boton-link-cruz');
+    equisIMG.setAttribute('class', 'cruz');
+    equisIMG.addEventListener('click', () => {
+        let toDelete = document.getElementById(`cont${newID}`);
+        toDelete.remove();
+        let newArray = [];
+        for(let i of arrayQueue)
+        {
+          if(i != msg.url)
+          {
+            newArray.push(i);
+          }
+        }
+        arrayQueue = newArray;
+    });
+    contenedorLink.appendChild(equisIMG);
+    /*
+    let alertIMG = document.createElement('img');
+    alertIMG.setAttribute('src', './alert.png');
+    alertIMG.setAttribute('alt', 'alert');
+    alertIMG.setAttribute('id', 'boton-link-alerta');
+    alertIMG.setAttribute('class', 'alert');
+    contenedorLink.appendChild(alertIMG);
+    */
+    marcoListaReproduccion.appendChild(contenedorLink);
+    }
+
 });
 
 var tag = document.createElement('script');
