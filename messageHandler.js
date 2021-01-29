@@ -20,7 +20,25 @@ class MessageHandler{
     {
         if(msg.type == "getTitle")
         {
-            fetch(urlAPI + msg.url.slice(32,43) + "&key=" + process.env.APIKEY)
+            if(msg.url.includes("watch?v="))
+            {
+                let newUrl = msg.url.split('=');
+                newUrl = newUrl[1].split('&');
+                newUrl = newUrl[0];
+            }
+            else if(msg.url.includes("youtu.be"))
+            {
+                if(msg.url.length == 28)
+                {
+                    let newUrl = msg.url.slice(17);
+                }
+                else if(msg.url.length == 20)
+                {
+                    let newUrl = msg.url.slice(9);
+                }
+            }
+
+            fetch(urlAPI + newUrl + "&key=" + process.env.APIKEY)
             .then(res => res.json())
             .then((res) => {
                 let newMsg = {
