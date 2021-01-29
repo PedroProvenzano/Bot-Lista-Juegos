@@ -95,4 +95,4 @@ Con este comando el bot muestra la lista de jugadores
 ```diff
 - Incompleto
 ```
-Agregar lector en discord
+Agregar lector en discord que funcione
