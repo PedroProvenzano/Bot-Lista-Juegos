@@ -92,4 +92,7 @@ Con este comando el bot muestra la lista de jugadores
 + Completado
 ```
 - Vincular la palabra 'jugar' con -info para que cuando alguien dice puedo jugar? o alguna variante el bot publique directamente la informacion de como sumarse a la lista
-
+```diff
+- Incompleto
+```
+Agregar lector en discord
