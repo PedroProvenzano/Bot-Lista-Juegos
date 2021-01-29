@@ -506,7 +506,7 @@ class MessageHandler{
                     }
                 }
             }
-            else if(msg.includes('-restarse'))
+            if(msg.includes('-restarse'))
             {
                 let estaEnLista = false;
                 for(let i  of getList.userGroup)
