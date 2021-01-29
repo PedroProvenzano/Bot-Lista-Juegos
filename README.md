@@ -85,6 +85,10 @@ Con este comando el bot muestra la lista de jugadores
 ```
 - Agregar un front para hacer un display de la lista
 ```diff
++ Completado
+```
+- Fusionado con bot de video reacciones, ahora hay un lobby previo para elegir que funcion te interesa usar
+```diff
 - Pendiente
 ```
 - Vincular la palabra 'jugar' con -info para que cuando alguien dice puedo jugar? o alguna variante el bot publique directamente la informacion de como sumarse a la lista

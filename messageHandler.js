@@ -362,12 +362,12 @@ class MessageHandler{
                     this.io.emit("transmition", getListEmited);
                     return;
                 }
-                if(msg.includes('-info')) // Funciona
+                else if(msg.includes('-info') || msg.includes('jugar')) // Funciona
                 {
                     this.client.say(channel, `Querés sumarte a las partidas? agregate a la lista escribiendo -sumarse en el chat, para consultar el orden actual de la lista poné -lista`);
                     return;
                 }
-                if(msg.includes('-cerrar')) // Funciona
+                else if(msg.includes('-cerrar')) // Funciona
                 {
                     ArrayGroup.findOneAndUpdate({ listName: `ListaFortnite${streamer}` }, { userGroup: getList.userGroup, listName: `ListaFortnite${streamer}`, isOpen: false }, (err, result) => {
                         if(err)
@@ -384,7 +384,7 @@ class MessageHandler{
                         }
                     });      
                 }
-                if(msg.includes('-abrir')) // Funciona
+                else if(msg.includes('-abrir')) // Funciona
                 {
                     ArrayGroup.findOneAndUpdate({ listName: `ListaFortnite${streamer}` }, { userGroup: getList.userGroup, listName: `ListaFortnite${streamer}`, isOpen: true }, (err, result) => {
                         if(err)
@@ -401,7 +401,7 @@ class MessageHandler{
                         }
                     });
                 }
-                if(msg.includes('-clear')) // Funciona
+                else if(msg.includes('-clear')) // Funciona
                 {
                     ArrayGroup.findOneAndUpdate({ listName: `ListaFortnite${streamer}` }, { userGroup: [], listName: `ListaFortnite${streamer}` }, (err, result) => {
                         if(err)
@@ -417,7 +417,7 @@ class MessageHandler{
                         return;
                     }); 
                 }
-                if(msg.includes('-agregar')) // Resolver
+                else if(msg.includes('-agregar')) // Resolver
                 {
                     msg = msg.slice(9);
                     if(msg != '')
@@ -430,7 +430,7 @@ class MessageHandler{
                         this.client.say(channel, `Epa, te falta poner un usuario para agregar :(`);
                     }
                 }
-                if(msg.includes('-siguiente')) // Resolver
+                else if(msg.includes('-siguiente')) // Resolver
                 {
                     if(getList.length == 0){
                         this.client.say(channel, `Todavía no hay jugadores anotados, podés agregar con el comando -agregar :)`);
@@ -457,7 +457,7 @@ class MessageHandler{
                     }
                 }
             }
-            if(msg.includes('-restarse'))
+            else if(msg.includes('-restarse'))
             {
                 let estaEnLista = false;
                 for(let i  of getList.userGroup)
@@ -495,7 +495,7 @@ class MessageHandler{
                     this.client.say(channel, `No estás en la lista`);
                 }
             }
-            if(msg.includes('-sumarse')) // Funciona
+            else if(msg.includes('-sumarse')) // Funciona
             {
                 if(getList.isOpen)
                 {
@@ -526,7 +526,7 @@ class MessageHandler{
                     return; 
                 }
             }
-            if(msg.includes('-lista')) // Funciona
+            else if(msg.includes('-lista')) // Funciona
             {
                 if(getList.userGroup.length == 0){
                     this.client.say(channel, `Todavía no hay jugadores anotados, podés sumarte con el comando -sumarse :)`);
@@ -546,7 +546,7 @@ class MessageHandler{
                 }
                 this.client.say(channel, `La lista de jugadores es:${ListString}`);
             }
-            if(msg.includes('-sr'))
+            else if(msg.includes('-sr'))
             {
                 let link = message.slice(4);
                 let msg = {
