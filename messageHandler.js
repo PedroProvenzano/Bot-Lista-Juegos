@@ -546,6 +546,7 @@ class MessageHandler{
             }
             else if(msg.includes('-sumarse')) // Funciona
             {
+                console.log('pase por sumarse');
                 if(getList.isOpen)
                 {
                     if(getList.userGroup.includes(tags.username))
