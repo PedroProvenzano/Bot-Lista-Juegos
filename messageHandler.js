@@ -20,31 +20,34 @@ class MessageHandler{
     {
         if(msg.type == "getTitle")
         {
+            let newUrl;
             if(msg.url.includes("watch?v="))
             {
-                let newUrl = msg.url.split('=');
+                console.log("tenia watch");
+                newUrl = msg.url.split('=');
                 newUrl = newUrl[1].split('&');
                 newUrl = newUrl[0];
             }
             else if(msg.url.includes("youtu.be"))
             {
+                console.log('tenia youtu.be');
                 if(msg.url.length == 28)
                 {
-                    let newUrl = msg.url.slice(17);
+                    newUrl = msg.url.slice(17);
                 }
                 else if(msg.url.length == 20)
                 {
-                    let newUrl = msg.url.slice(9);
+                    newUrl = msg.url.slice(9);
                 }
             }
-
+            console.log(newUrl);
             fetch(urlAPI + newUrl + "&key=" + process.env.APIKEY)
             .then(res => res.json())
             .then((res) => {
                 let newMsg = {
                     channel: msg.channel,
                     title: res.items[0].snippet.title,
-                    url: msg.url
+                    url: newUrl
                 }
                 this.io.emit('TitleGot', newMsg);
             });

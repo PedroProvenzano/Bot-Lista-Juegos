@@ -594,9 +594,8 @@ var tag = document.createElement('script');
 
 function getAndPostVideo(link)
 {
-  let urlID = link.slice(32,43);
-  console.log("Ejecutando video agregado");
-  player.loadVideoById(urlID, 0, "default");
+  console.log("Ejecutando video agregado", link);
+  player.loadVideoById(link, 0, "default");
 }
 
 function getNextOne(array)
