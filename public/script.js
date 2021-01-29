@@ -38,7 +38,7 @@ let channel = "";
 let username = "";
 let accessToken = "";
 let authAccessToken = "";
-
+let isOpenQueue = true;
 
 if(localStorage.LoggedUser)
 {
@@ -538,6 +538,13 @@ socket.on('newQueue', msg => {
     }
 });
 
+socket.on('deleted', async (msg) => {
+    if(msg.channel == channel)
+    {
+        arrayQueue = msg.queue;
+        agregarAQueue(arrayQueue);
+    }
+});
 
 socket.on('newVideo', async (msg) => {
     if(msg.channel == channel){
@@ -566,6 +573,15 @@ function agregarAQueue(queue)
         getAndPostVideo(msg.url);
         let toDelete = document.getElementById(`cont${newID}`);
         toDelete.remove();
+        let msgDel = {
+            type: "deleteUrl",
+            channel: channel,
+            title: msg.title,
+            isOpen: isOpenQueue
+        }
+        socket.emit('newOrder', msgDel);
+        });
+        //arrayQueue.push(msg.url);
         contenedorLink.appendChild(parrafo);
         let equisIMG = document.createElement("img");
         equisIMG.setAttribute('src', './equis.png');

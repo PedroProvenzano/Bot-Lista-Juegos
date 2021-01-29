@@ -20,6 +20,33 @@ class MessageHandler{
     
     async HandleDataBase(msg)
     {
+        if(msg.type == "deleteUrl")
+        {
+            const getQueue = await QueueVideo.findOne({ listName: msg.channel }).exec();
+            let newQueueDel = [];
+            for(let i of getQueue)
+            {
+                if(i.title != msg.title)
+                {
+                    newQueueDel.push(i);
+                }
+            }
+            
+            QueueVideo.findOneAndUpdate({ listName: msg.channel }, { queue: newQueueDel, listName: msg.channel, isOpen: msg.isOpenQueue }, (err, result) => {
+                if(err)
+                {
+                    console.log(err);
+                }else{
+                    let msgDel = {
+                        channel: msg.channel,
+                        queue: newQueueDel,
+                        isOpenDel: msg.isOpenDel 
+                    }
+                    this.io.emit("deleted", msgDel);
+                    return;
+                }
+            }); 
+        }
         if(msg.type == "getTitle")
         {
             let newUrl;
