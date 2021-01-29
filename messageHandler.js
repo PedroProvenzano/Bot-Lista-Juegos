@@ -59,11 +59,11 @@ class MessageHandler{
                     {
                         console.log(err);
                     }else{
-                        let msg = {
+                        let msgQ = {
                             channel: msg.channel,
                             queue: newQueue,
                         }
-                        this.io.emit("newQueue", msg);
+                        this.io.emit("newQueue", msgQ);
                         return;
                     }
                 });
