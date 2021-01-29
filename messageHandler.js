@@ -388,7 +388,7 @@ class MessageHandler{
 
         if(tags == "discord")
         {
-            const getQueue = await QueueVideo.findOne({ listName: `ListaFortniteperlitapink` }).exec();
+            let getQueue = await QueueVideo.findOne({ listName: `ListaFortniteperlitapink` }).exec();
             if(getQueue==null)
             {
                 const Queue = new QueueVideo({
