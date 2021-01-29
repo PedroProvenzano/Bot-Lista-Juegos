@@ -388,6 +388,7 @@ button{
     background-color: #ffc570;
     width: 25vw;
     height: 100vh;
+    overflow: auto;
 }
   
 .linkReproduccion {

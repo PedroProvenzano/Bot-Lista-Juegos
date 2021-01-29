@@ -596,8 +596,8 @@ var tag = document.createElement('script');
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          height: '1000',
-          width: '1290.590',
+          height: '100%',
+          width: '100%',
           videoId: 'doOXUOlalmU',
           events: {
             'onStateChange': onPlayerStateChange
