@@ -24,7 +24,7 @@ class MessageHandler{
         {
             const getQueue = await QueueVideo.findOne({ listName: msg.channel }).exec();
             let newQueueDel = [];
-            for(let i of getQueue)
+            for(let i of getQueue.queue)
             {
                 if(i.title != msg.title)
                 {
