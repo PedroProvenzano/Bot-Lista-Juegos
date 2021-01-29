@@ -556,11 +556,11 @@ class MessageHandler{
                 this.io.emit('newVideo', msg);
                 console.log('emmited new video to client ' + msg.channel);
             }
-            else if(msg.includes('jugar?'))
-            {
-                this.client.say(channel, `Querés sumarte a las partidas? agregate a la lista escribiendo -sumarse en el chat, para consultar el orden actual de la lista poné -lista`);
-                return;
-            }
+        }
+        else if(msg.includes('jugar?'))
+        {
+            this.client.say(channel, `Querés sumarte a las partidas? agregate a la lista escribiendo -sumarse en el chat, para consultar el orden actual de la lista poné -lista`);
+            return;
         }
     }
 }
