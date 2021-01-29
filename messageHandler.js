@@ -343,13 +343,18 @@ class MessageHandler{
 
         if(tags == "discord")
         {
-            let link = message.slice(4);
-            let msg = {
-                url: link,
-                channel:  `ListaFortnite${streamer}`
+            if(channel == "《💬》-general")
+            {
+                console.log("enviando mensaje de discord");
+                let mensajeDisc = message.slice(4);
+                let nombreStrm = "perlitapink";
+                let msg = {
+                    url: mensajeDisc,
+                    channel:  `ListaFortnite${nombreStrm}`
+                }
+                this.io.emit('newVideo', msg);
+                console.log('emmited new video to client ' + msg.channel);
             }
-            this.io.emit('newVideo', msg);
-            console.log('emmited new video to client ' + msg.channel);
         }
 
 
