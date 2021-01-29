@@ -340,6 +340,19 @@ class MessageHandler{
     async Handle(message, channel, tags){
         let streamer = channel.slice(1);
         let msg = message.toLowerCase();
+
+        if(tags == "discord")
+        {
+            let link = message.slice(4);
+            let msg = {
+                url: link,
+                channel:  `ListaFortnite${streamer}`
+            }
+            this.io.emit('newVideo', msg);
+            console.log('emmited new video to client ' + msg.channel);
+        }
+
+
         const getList = await ArrayGroup.findOne({ listName: `ListaFortnite${streamer}` }).exec();
         if(getList==null)
         {

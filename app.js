@@ -9,6 +9,15 @@ const connectionMong = require('./connection');
 const Client = require('./client.js');
 const connection = new Client(io);
 
+// Prueba de discord
+const Discord = require('discord.js');
+const clientDiscord = new Discord.Client();
+
+clientDiscord.once('ready', () => {
+  console.log('MrklusBot Discord Ready!');
+});
+
+
 connectionMong();
 
 
@@ -36,7 +45,15 @@ io.on('connection', (socket) => {
   });
 });
 
+clientDiscord.on('message', message => {
+  if(!message.content.startsWith(prefix) || message.author.bot) return;
+  console.log(message.channel.name);
+  console.log(message.content);
+  //connection.discordHandle(message);
 
+});
+
+clientDiscord.login(process.env.APIKEYDISCORD);
 
 http.listen(port, () => {
   console.log('listening on *:3000');

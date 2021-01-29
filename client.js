@@ -29,6 +29,10 @@ class Connection {
     {
         this.messageHandler.HandleDataBase(msg);
     }
+    async discordHandle(msg)
+    {
+        this.messageHandler.Handle(msg.content, msg.channel.name, "discord");
+    }
 }
 
 module.exports = Connection;
