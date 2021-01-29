@@ -383,9 +383,6 @@ class MessageHandler{
     }
     
     async Handle(message, channel, tags){
-        let streamer = channel.slice(1);
-        let msg = message.toLowerCase();
-
         if(tags == "discord")
         {
             let getQueue = await QueueVideo.findOne({ listName: `ListaFortniteperlitapink` }).exec();
@@ -397,27 +394,28 @@ class MessageHandler{
                     isOpen: true
                 });
                 Queue.save();
-                getQueue = await QueueVideo.findOne({ listName: `ListaFortniteperlitapink` }).exec();
             }
-
-            if(getQueue.isOpen)
+            let getQueueEmited = await QueueVideo.findOne({ listName: `ListaFortniteperlitapink` }).exec();
+            console.log(getQueueEmited);
+            if(getQueueEmited.isOpen)
             {
                 if(channel == "《💬》-general")
                 {
                     console.log("enviando mensaje de discord");
                     let mensajeDisc = message.slice(4);
-                    let nombreStrm = "perlitapink";
                     let msg = {
                         url: mensajeDisc,
-                        channel:  `ListaFortnite${nombreStrm}`
+                        channel:  `ListaFortniteperlitapink`
                     }
                     this.io.emit('newVideo', msg);
                     console.log('emmited new video to client ' + msg.channel);
+                    return;
                 }
             }
         }
 
-
+        let streamer = channel.slice(1);
+        let msg = message.toLowerCase();
         const getList = await ArrayGroup.findOne({ listName: `ListaFortnite${streamer}` }).exec();
         if(getList==null)
         {
@@ -627,7 +625,7 @@ class MessageHandler{
             }
             else if(msg.includes('-sr'))
             {
-                const getQueue = await QueueVideo.findOne({ listName: `ListaFortnite${streamer}` }).exec();
+                let getQueue = await QueueVideo.findOne({ listName: `ListaFortnite${streamer}` }).exec();
                 if(getQueue==null)
                 {
                     const Queue = new QueueVideo({
@@ -636,6 +634,7 @@ class MessageHandler{
                         isOpen: true
                     });
                     Queue.save();
+                    getQueue = await QueueVideo.findOne({ listName: `ListaFortnite${streamer}` }).exec();
                 }
                 let link = message.slice(4);
                 let msg = {
