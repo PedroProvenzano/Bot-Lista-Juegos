@@ -9,6 +9,8 @@ const connectionMong = require('./connection');
 const Client = require('./client.js');
 const connection = new Client(io);
 
+const prefix = '-';
+
 // Prueba de discord
 const Discord = require('discord.js');
 const clientDiscord = new Discord.Client();
