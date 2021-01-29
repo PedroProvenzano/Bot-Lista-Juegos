@@ -17,4 +17,4 @@ const QueueVideoSchema = mongoose.Schema({
 });
 
 
-module.exports = mongoose.model("ArrayGroup", QueueVideoSchema);
+module.exports = mongoose.model("QueueVideo", QueueVideoSchema);
