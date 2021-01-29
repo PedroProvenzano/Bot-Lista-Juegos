@@ -45,7 +45,7 @@ class MessageHandler{
             console.log(newUrl);
             fetch(urlAPI + newUrl + "&key=" + process.env.APIKEY)
             .then(res => res.json())
-            .then((res) => {
+            .then( async (res) => {
                 let newMsg = {
                     channel: msg.channel,
                     title: res.items[0].snippet.title,
