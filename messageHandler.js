@@ -8,6 +8,8 @@ let urlAPI = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=";
 const ArrayGroup = require('./Models/ArrayGroup');
 const ClientUser = require('./Models/ClientUser');
 const Token = require('./Models/Token');
+const QueueVideo = require('./Models/QueueVideo');
+
 class MessageHandler{
     constructor(client, io){
         this.io = io;
@@ -49,7 +51,23 @@ class MessageHandler{
                     title: res.items[0].snippet.title,
                     url: newUrl
                 }
-                this.io.emit('TitleGot', newMsg);
+                const getQueue = await QueueVideo.findOne({ listName: msg.channel }).exec();
+                let newQueue = getQueue.queue;
+                newQueue.push(newMsg);
+                QueueVideo.findOneAndUpdate({ listName: msg.channel }, { queue: newQueue, listName: msg.channel, isOpen: true }, (err, result) => {
+                    if(err)
+                    {
+                        console.log(err);
+                    }else{
+                        let msg = {
+                            channel: msg.channel,
+                            queue: newQueue,
+                        }
+                        this.io.emit("newQueue", msg);
+                        return;
+                    }
+                });
+                //this.io.emit('newQueue', newMsg);
             });
         }
         if(msg.type == "newToken")
@@ -343,17 +361,30 @@ class MessageHandler{
 
         if(tags == "discord")
         {
-            if(channel == "《💬》-general")
+            const getQueue = await QueueVideo.findOne({ listName: `ListaFortniteperlitapink` }).exec();
+            if(getQueue==null)
             {
-                console.log("enviando mensaje de discord");
-                let mensajeDisc = message.slice(4);
-                let nombreStrm = "perlitapink";
-                let msg = {
-                    url: mensajeDisc,
-                    channel:  `ListaFortnite${nombreStrm}`
+                const Queue = new QueueVideo({
+                    queue: [],
+                    listName: `ListaFortniteperlitapink`,
+                    isOpen: true
+                });
+                Queue.save();
+            }
+            if(getQueue.isOpen)
+            {
+                if(channel == "《💬》-general")
+                {
+                    console.log("enviando mensaje de discord");
+                    let mensajeDisc = message.slice(4);
+                    let nombreStrm = "perlitapink";
+                    let msg = {
+                        url: mensajeDisc,
+                        channel:  `ListaFortnite${nombreStrm}`
+                    }
+                    this.io.emit('newVideo', msg);
+                    console.log('emmited new video to client ' + msg.channel);
                 }
-                this.io.emit('newVideo', msg);
-                console.log('emmited new video to client ' + msg.channel);
             }
         }
 
@@ -566,6 +597,16 @@ class MessageHandler{
             }
             else if(msg.includes('-sr'))
             {
+                const getQueue = await QueueVideo.findOne({ listName: `ListaFortnite${streamer}` }).exec();
+                if(getQueue==null)
+                {
+                    const Queue = new QueueVideo({
+                        queue: [],
+                        listName: `ListaFortnite${streamer}`,
+                        isOpen: true
+                    });
+                    Queue.save();
+                }
                 let link = message.slice(4);
                 let msg = {
                     url: link,

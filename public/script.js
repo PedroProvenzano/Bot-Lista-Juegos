@@ -519,6 +519,25 @@ const regex = / /gi;
 // DOM
 const marcoListaReproduccion = document.getElementById("marcoListaReproduccion");
 
+// Recibe lista nueva
+socket.on('newQueue', msg => {
+    if(msg.channel == channel)
+    {
+        for(let i of msg.queue)
+        {
+            if(arrayQueue.includes(i))
+            {
+                return;
+            }
+            else{
+                arrayQueue.push(i);
+            }
+        }
+        agregarAQueue(arrayQueue);
+    }
+});
+
+
 socket.on('newVideo', async (msg) => {
     if(msg.channel == channel){
       let newMsg = {
@@ -529,64 +548,72 @@ socket.on('newVideo', async (msg) => {
       socket.emit('newOrder', newMsg);
     }
 });
-socket.on('TitleGot', async (msg) => {
-  if(msg.channel == channel)
-  {
-    let newID = msg.title.replace(regex,"-");
-    let contenedorLink = document.createElement('div');
-    contenedorLink.setAttribute("class", "linkReproduccion");
-    contenedorLink.setAttribute('id', `cont${newID}`);
-    let parrafo = document.createElement('p');
-    parrafo.setAttribute('id', newID);
-    parrafo.innerText = msg.title;
-    parrafo.addEventListener('click', () => {
-      getAndPostVideo(msg.url);
-      let toDelete = document.getElementById(`cont${newID}`);
-      toDelete.remove();
-      let newArray = [];
-      for(let i of arrayQueue)
-      {
-        if(i != msg.url)
-        {
-          newArray.push(i);
-        }
-      }
-      arrayQueue = newArray;
-    });
-      arrayQueue.push(msg.url);
-      contenedorLink.appendChild(parrafo);
-    let equisIMG = document.createElement("img");
-    equisIMG.setAttribute('src', './equis.png');
-    equisIMG.setAttribute('alt', 'cruz');
-    equisIMG.setAttribute('id', 'boton-link-cruz');
-    equisIMG.setAttribute('class', 'cruz');
-    equisIMG.addEventListener('click', () => {
+// Funcion de agregar a lista
+function agregarAQueue(queue)
+{
+    for(let msg of queue)
+    {
+        let newID = msg.title.replace(regex,"-");
+        let contenedorLink = document.createElement('div');
+        contenedorLink.setAttribute("class", "linkReproduccion");
+        contenedorLink.setAttribute('id', `cont${newID}`);
+        let parrafo = document.createElement('p');
+        parrafo.setAttribute('id', newID);
+        parrafo.innerText = msg.title;
+        parrafo.addEventListener('click', () => {
+        getAndPostVideo(msg.url);
         let toDelete = document.getElementById(`cont${newID}`);
         toDelete.remove();
         let newArray = [];
         for(let i of arrayQueue)
         {
-          if(i != msg.url)
-          {
+            if(i != msg.url)
+            {
             newArray.push(i);
-          }
+            }
         }
         arrayQueue = newArray;
-    });
-    contenedorLink.appendChild(equisIMG);
-    /*
-    let alertIMG = document.createElement('img');
-    alertIMG.setAttribute('src', './alert.png');
-    alertIMG.setAttribute('alt', 'alert');
-    alertIMG.setAttribute('id', 'boton-link-alerta');
-    alertIMG.setAttribute('class', 'alert');
-    contenedorLink.appendChild(alertIMG);
-    */
-    marcoListaReproduccion.appendChild(contenedorLink);
+        });
+        arrayQueue.push(msg.url);
+        contenedorLink.appendChild(parrafo);
+        let equisIMG = document.createElement("img");
+        equisIMG.setAttribute('src', './equis.png');
+        equisIMG.setAttribute('alt', 'cruz');
+        equisIMG.setAttribute('id', 'boton-link-cruz');
+        equisIMG.setAttribute('class', 'cruz');
+        equisIMG.addEventListener('click', () => {
+            let toDelete = document.getElementById(`cont${newID}`);
+            toDelete.remove();
+            let newArray = [];
+            for(let i of arrayQueue)
+            {
+            if(i != msg.url)
+            {
+                newArray.push(i);
+            }
+            }
+            arrayQueue = newArray;
+        });
+        contenedorLink.appendChild(equisIMG);
+        /*
+        let alertIMG = document.createElement('img');
+        alertIMG.setAttribute('src', './alert.png');
+        alertIMG.setAttribute('alt', 'alert');
+        alertIMG.setAttribute('id', 'boton-link-alerta');
+        alertIMG.setAttribute('class', 'alert');
+        contenedorLink.appendChild(alertIMG);
+        */
+        marcoListaReproduccion.appendChild(contenedorLink);
     }
+}
+/*
+socket.on('TitleGot', async (msg) => {
+  if(msg.channel == channel)
+  {
+    
 
 });
-
+*/
 var tag = document.createElement('script');
 
       tag.src = "https://www.youtube.com/iframe_api";
