@@ -523,6 +523,7 @@ const marcoListaReproduccion = document.getElementById("marcoListaReproduccion")
 socket.on('newQueue', msg => {
     if(msg.channel == channel)
     {
+        arrayQueue = [];
         for(let i of msg.queue)
         {
             if(arrayQueue.includes(i))
