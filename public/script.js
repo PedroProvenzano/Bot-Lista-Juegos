@@ -551,6 +551,7 @@ socket.on('newVideo', async (msg) => {
 // Funcion de agregar a lista
 function agregarAQueue(queue)
 {
+    marcoListaReproduccion.innerHTML = "";
     for(let msg of queue)
     {
         let newID = msg.title.replace(regex,"-");
