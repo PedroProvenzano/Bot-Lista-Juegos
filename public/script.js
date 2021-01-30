@@ -687,3 +687,19 @@ botonVolverVideo.addEventListener("click", () => {
     videoReaccion.style.display = "none";
     lobby.style.display = "flex";
 });
+
+const botonUpdateReac = document.getElementById("button-update-reaccion");
+botonUpdateReac.addEventListener('click', () => {
+    let msgRefresh = {
+        type: 'refreshReac',
+        channel: channel
+    }
+    socket.emit('newOrder', msgRefresh);
+});
+
+socket.on('refreshQueueList', msg => {
+    if(msg.channel == channel)
+    {
+        agregarAQueue(msg.queue);
+    }
+});

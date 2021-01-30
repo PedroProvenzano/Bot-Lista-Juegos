@@ -48,7 +48,7 @@ body{
 
 /* Seccion Intro */
 .intro{
-    display: flex;  
+    display: none;  /* flex */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -360,7 +360,7 @@ button{
 }
   
 .video-reaccion {
-    display: none; 
+    display: flex; /* none */
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -372,7 +372,11 @@ button{
         -ms-flex-pack: center;
             justify-content: center;
 }
-  
+.updReac{
+    position: absolute;
+    top: 5.5vh;
+    left: 1vw;
+}
 .contenedor-reproductor-lista {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -426,12 +430,22 @@ button{
     user-select: none;
     position: absolute;
     top: 0;
-    left: 0;
-    padding: 0.5rem;
+    left: -2vw;
+    width: 5vw;
+    height: 6vh;
     border-radius: 20%;
     border: 5px dotted black;
     background-color: #ff4e4e;
+    transition: all 200ms;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .boton-volver:hover{
+    left: 0;
     cursor: pointer;
+}
+.arrow-reac{
+    height: 40px;
 }

@@ -20,6 +20,16 @@ class MessageHandler{
     
     async HandleDataBase(msg)
     {
+        if(msg.type == "refreshReac")
+        {
+            const getQueue = await QueueVideo.findOne({ listName: msg.channel }).exec();
+            let msgRefReac = {
+                channel: msg.channel,
+                queue: getQueue.queue
+            }
+            this.io.emit('refreshQueueList', msgRefReac);
+            return;
+        }
         if(msg.type == "deleteUrl")
         {
             const getQueue = await QueueVideo.findOne({ listName: msg.channel }).exec();
