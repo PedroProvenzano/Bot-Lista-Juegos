@@ -48,7 +48,7 @@ body{
 
 /* Seccion Intro */
 .intro{
-    display: none;  /* flex */
+    display: flex;  /* flex */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -360,7 +360,7 @@ button{
 }
   
 .video-reaccion {
-    display: flex; /* none */
+    display: none; /* none */
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
