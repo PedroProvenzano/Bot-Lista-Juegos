@@ -498,8 +498,10 @@ botonContenedorListaJuegos.addEventListener('click', () => {
         contenido.style.display = "flex";
         lobby.style.display = "none";
         lobby.style.opacity = "100";
-        contenido.style.marginTop = "0";
     }, 300);
+    setTimeout(() => {
+        contenido.style.marginTop = "0";
+    }, 320);
 });
 
 
@@ -509,8 +511,10 @@ botonVideoReacciones.addEventListener('click', () => {
         videoReaccion.style.display = "flex";
         lobby.style.display = "none";
         lobby.style.opacity = "100";
-        contenedorVideoReacciones[0].style.marginTop = "0";
     }, 300);
+    setTimeout(() => {
+        contenedorVideoReacciones[0].style.marginTop = "0";
+    }, 320);
 });
 
 
