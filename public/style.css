@@ -173,6 +173,8 @@ body{
     display: none;/* flex;*/
     flex-direction: column;
     align-items: center;
+    transition: all 300ms;
+    margin-top: -64rem;
 }
 .titleContainer{
     display: flex;
@@ -385,6 +387,8 @@ button{
         -ms-flex-pack: center;
             justify-content: flex-end;
             width: 100vw;
+    transition: all 300ms;
+    margin-top: -64rem;
 }
   
 .marcoListaReproduccion {

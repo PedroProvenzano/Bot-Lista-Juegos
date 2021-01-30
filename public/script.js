@@ -31,7 +31,7 @@ const lobby = document.getElementById("lobby");
 const videoReaccion = document.getElementById("video-reaccion");
 const botonContenedorListaJuegos = document.getElementById("contenedor-lista-juego");
 const botonVideoReacciones = document.getElementById("contenedor-video-reaccion");
-
+const contenedorVideoReacciones = document.getElementsByClassName("contenedor-reproductor-lista");
 
 let clicked = true;
 let channel = "";
@@ -498,8 +498,10 @@ botonContenedorListaJuegos.addEventListener('click', () => {
         contenido.style.display = "flex";
         lobby.style.display = "none";
         lobby.style.opacity = "100";
+        contenido.style.marginTop = "0";
     }, 300);
 });
+
 
 botonVideoReacciones.addEventListener('click', () => {
     lobby.style.opacity = "0";
@@ -507,6 +509,7 @@ botonVideoReacciones.addEventListener('click', () => {
         videoReaccion.style.display = "flex";
         lobby.style.display = "none";
         lobby.style.opacity = "100";
+        contenedorVideoReacciones.style.marginTop = "0";
     }, 300);
 });
 
@@ -680,12 +683,18 @@ function getNextOne(array)
 
 
 botonVolver.addEventListener('click', () => {
-    contenido.style.display = "none";
-    lobby.style.display = "flex";
+    contenido.style.marginTop = "-64rem";
+    setTimeout(() => {
+        contenido.style.display = "none";
+        lobby.style.display = "flex";
+    }, 300);
 });
 botonVolverVideo.addEventListener("click", () => {
-    videoReaccion.style.display = "none";
-    lobby.style.display = "flex";
+    contenedorVideoReacciones.style.marginTop = "-64rem";
+    setTimeout(() => {
+        videoReaccion.style.display = "none";
+        lobby.style.display = "flex";
+    }, 300);
 });
 
 const botonUpdateReac = document.getElementById("button-update-reaccion");
