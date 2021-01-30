@@ -509,7 +509,7 @@ botonVideoReacciones.addEventListener('click', () => {
         videoReaccion.style.display = "flex";
         lobby.style.display = "none";
         lobby.style.opacity = "100";
-        contenedorVideoReacciones.style.marginTop = "0";
+        contenedorVideoReacciones[0].style.marginTop = "0";
     }, 300);
 });
 
@@ -690,7 +690,7 @@ botonVolver.addEventListener('click', () => {
     }, 300);
 });
 botonVolverVideo.addEventListener("click", () => {
-    contenedorVideoReacciones.style.marginTop = "-64rem";
+    contenedorVideoReacciones[0].style.marginTop = "-64rem";
     setTimeout(() => {
         videoReaccion.style.display = "none";
         lobby.style.display = "flex";
