@@ -656,7 +656,14 @@ var tag = document.createElement('script');
           else
           {
             let nextVideo = getNextOne(arrayQueue);
-            getAndPostVideo(nextVideo);
+            getAndPostVideo(nextVideo.url);
+            let msgDel = {
+            type: "deleteUrl",
+            channel: channel,
+            title: nextVideo.title,
+            isOpen: isOpenQueue
+            }
+            socket.emit('newOrder', msgDel);
           }
         }
       }
