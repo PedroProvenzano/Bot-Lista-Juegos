@@ -17,7 +17,7 @@ class MessageHandler {
     this.usersOrder = [];
     this.isOpen = true;
   }
-
+  /*
   async HandleDataBase(msg) {
     if (msg.type == "refreshReac") {
       const getQueue = await QueueVideo.findOne({
@@ -403,7 +403,7 @@ class MessageHandler {
       });
     }
   }
-
+*/
   async Handle(message, channel, tags) {
     if (tags == "discord") {
       let getQueue = await QueueVideo.findOne({

@@ -1,8 +1,8 @@
 const tmi = require("tmi.js");
 require("dotenv/config");
 const MessageHandler = require("./messageHandler.js");
+const messageHandlerSocket = require("./MessageHandlerSocket");
 const { listenerCount } = require("./Models/ArrayGroup.js");
-
 class Connection {
   constructor(io) {
     this.io = io;
@@ -20,13 +20,14 @@ class Connection {
     });
     this.client.connect();
     this.messageHandler = new MessageHandler(this.client, this.io);
+    this.MessageHandlerSocket = new messageHandlerSocket(this.client, this.io);
     this.client.on("message", (channel, tags, message, self) => {
       if (self) return;
       this.messageHandler.Handle(message, channel, tags);
     });
   }
   async ListenHandleIo(msg) {
-    this.messageHandler.HandleDataBase(msg);
+    this.MessageHandlerSocket.HandleDataBase(msg);
   }
   async discordHandle(msg) {
     this.messageHandler.Handle(msg.content, msg.channel.name, "discord");

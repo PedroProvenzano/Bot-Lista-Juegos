@@ -109,6 +109,7 @@ socket.on("transmition", (msg) => {
       botonSacar.setAttribute("class", "botonX");
       botonSacar.addEventListener("click", () => {
         let msg = {
+          secc: "lista",
           type: "restarUsuario",
           userDel: usernameDel,
           channel: channel,
@@ -124,6 +125,7 @@ socket.on("transmition", (msg) => {
       imgAlert.setAttribute("id", "button-alert");
       imgAlert.addEventListener("click", () => {
         let msg = {
+          secc: "lista",
           type: "alertarUsuario",
           userDel: usernameDel,
           channel: channel,
@@ -177,6 +179,7 @@ buttonColors.addEventListener("click", () => {
 botonLista.addEventListener("click", () => {
   if (clicked) {
     let message = {
+      secc: "lista",
       type: "listStatus",
       channel: channel,
       isOpen: false,
@@ -186,6 +189,7 @@ botonLista.addEventListener("click", () => {
     socket.emit("listStatus", message);
   } else {
     let message = {
+      secc: "lista",
       type: "listStatus",
       channel: channel,
       isOpen: true,
@@ -272,6 +276,7 @@ botonRegistroCrearCuenta.addEventListener("click", () => {
   }
   username = userName;
   let msg = {
+    secc: "lista",
     type: "register",
     username: userName,
     password: passWord,
@@ -313,6 +318,7 @@ botonRegistroLogin.addEventListener("click", () => {
   }
   username = userName;
   let msg = {
+    secc: "lista",
     type: "login",
     username: userName,
     password: passWord,
@@ -355,6 +361,7 @@ socket.on("loginResponse", (response) => {
 // Funcion para conseguir nueva token
 async function getNewToken(event, userDel) {
   let msg = {
+    secc: "general",
     type: "newToken",
     username: username,
     token: authAccessToken,
@@ -372,6 +379,7 @@ socket.on("newTokenResponse", (response) => {
       switch (response.event) {
         case "closingList":
           let msgClos = {
+            secc: "lista",
             type: "listStatus",
             channel: channel,
             isOpen: false,
@@ -382,6 +390,7 @@ socket.on("newTokenResponse", (response) => {
           break;
         case "openingList":
           let msgOp = {
+            secc: "lista",
             type: "listStatus",
             channel: channel,
             isOpen: true,
@@ -392,6 +401,7 @@ socket.on("newTokenResponse", (response) => {
           break;
         case "removeUser":
           let msgRem = {
+            secc: "lista",
             type: "restarUsuario",
             userDel: response.userDel,
             channel: channel,
@@ -402,6 +412,7 @@ socket.on("newTokenResponse", (response) => {
           break;
         case "alertUser":
           let msgAlt = {
+            secc: "lista",
             type: "alertarUsuario",
             userDel: response.userDel,
             channel: channel,
@@ -429,6 +440,7 @@ socket.on("getNewToken", (response) => {
 const botonLogout = document.getElementById("button-logout");
 botonLogout.addEventListener("click", () => {
   let msg = {
+    secc: "general",
     type: "logout",
     authToken: authAccessToken,
     username: username,
@@ -453,6 +465,7 @@ const buttonUpdate = document.getElementById("button-update");
 
 buttonUpdate.addEventListener("click", () => {
   let msgUpdate = {
+    secc: "lista",
     type: "update",
     channel: channel,
   };
@@ -520,6 +533,7 @@ socket.on("deleted", async (msg) => {
 socket.on("newVideo", async (msg) => {
   if (msg.channel == channel) {
     let newMsg = {
+      secc: "reaccion",
       type: "getTitle",
       url: msg.url,
       channel: msg.channel,
@@ -543,6 +557,7 @@ function agregarAQueue(queue) {
       let toDelete = document.getElementById(`cont${newID}`);
       toDelete.remove();
       let msgDel = {
+        secc: "reaccion",
         type: "deleteUrl",
         channel: channel,
         title: msg.title,
@@ -614,6 +629,7 @@ function onPlayerStateChange(event) {
       let nextVideo = getNextOne(arrayQueue);
       getAndPostVideo(nextVideo.url);
       let msgDel = {
+        secc: "reaccion",
         type: "deleteUrl",
         channel: channel,
         title: nextVideo.title,
@@ -661,6 +677,7 @@ botonVolverVideo.addEventListener("click", () => {
 const botonUpdateReac = document.getElementById("button-update-reaccion");
 botonUpdateReac.addEventListener("click", () => {
   let msgRefresh = {
+    secc: "reaccion",
     type: "refreshReac",
     channel: channel,
   };
