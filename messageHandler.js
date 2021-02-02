@@ -303,6 +303,8 @@ class MessageHandler {
           }).exec();
         }
         let link = message.slice(4);
+
+        console.log(`Servidor -sr Stage ${tags.username}`);
         let msg = {
           user: tags.username,
           url: link,

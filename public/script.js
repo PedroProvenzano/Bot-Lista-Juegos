@@ -532,6 +532,7 @@ socket.on("deleted", async (msg) => {
 
 socket.on("newVideo", async (msg) => {
   if (msg.channel == channel) {
+    console.log(`cliente newVideo Stage ${msg.user}`);
     let newMsg = {
       secc: "reaccion",
       type: "getTitle",

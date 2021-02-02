@@ -82,6 +82,7 @@ class SocketSectionReaccion {
         .then((res) => res.json())
         .then(async (res) => {
           let newMsg = {
+            user: msg.user,
             channel: msg.channel,
             title: res.items[0].snippet.title,
             url: newUrl,
@@ -98,8 +99,8 @@ class SocketSectionReaccion {
               if (err) {
                 console.log(err);
               } else {
+                console.log(`Servidor getTitle Stage ${msg.user}`);
                 let msgQ = {
-                  user: msg.user,
                   channel: msg.channel,
                   queue: newQueue,
                 };
