@@ -5,10 +5,12 @@ const jwt = require("jsonwebtoken");
 require("dotenv/config");
 const fetch = require("node-fetch");
 let urlAPI = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=";
-const ArrayGroup = require("./Models/ArrayGroup");
-const ClientUser = require("./Models/ClientUser");
-const Token = require("./Models/Token");
-const QueueVideo = require("./Models/QueueVideo");
+
+//  Modelos
+const ArrayGroup = require("../Models/ArrayGroup");
+const ClientUser = require("../Models/ClientUser");
+const Token = require("../Models/Token");
+const QueueVideo = require("../Models/QueueVideo");
 
 class SocketSectionLista {
   constructor(client, io) {
