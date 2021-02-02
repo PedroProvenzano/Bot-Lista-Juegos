@@ -21,6 +21,30 @@ class SocketSectionLista {
   }
 
   async HandleDataBase(msg) {
+    const getList = await ArrayGroup.findOne({ listName: msg.channel }).exec();
+    // Alertar Usuario
+    if (msg.type == "alertarUsuario") {
+      jwt.verify(msg.token, process.env.SECRET_PASSWORD_JWT, (err, user) => {
+        if (err) {
+          let response = {
+            sts: false,
+            msg: `err`,
+            username: msg.channel,
+            event: msg.event,
+            userDel: msg.userDel,
+            accessToken: msg.token,
+          };
+          this.io.emit("getNewToken", response);
+          return;
+        } else {
+          this.client.say(
+            msg.channel.slice(13),
+            `${msg.userDel} te toca, manifiestate! OhMyDog `
+          );
+          return;
+        }
+      });
+    }
     // Restar Usuario
     if (msg.type == "restarUsuario") {
       jwt.verify(msg.token, process.env.SECRET_PASSWORD_JWT, (err, user) => {
