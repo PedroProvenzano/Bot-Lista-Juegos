@@ -535,6 +535,7 @@ socket.on("newVideo", async (msg) => {
     let newMsg = {
       secc: "reaccion",
       type: "getTitle",
+      user: msg.user,
       url: msg.url,
       channel: msg.channel,
     };
@@ -551,7 +552,7 @@ function agregarAQueue(queue) {
     contenedorLink.setAttribute("id", `cont${newID}`);
     let parrafo = document.createElement("p");
     parrafo.setAttribute("id", newID);
-    parrafo.innerText = msg.title;
+    parrafo.innerHTML = `${msg.user} <br> ${msg.title}`;
     parrafo.addEventListener("click", () => {
       getAndPostVideo(msg.url);
       let toDelete = document.getElementById(`cont${newID}`);

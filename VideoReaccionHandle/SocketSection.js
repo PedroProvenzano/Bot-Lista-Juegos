@@ -99,6 +99,7 @@ class SocketSectionReaccion {
                 console.log(err);
               } else {
                 let msgQ = {
+                  user: msg.user,
                   channel: msg.channel,
                   queue: newQueue,
                 };

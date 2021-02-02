@@ -304,6 +304,7 @@ class MessageHandler {
         }
         let link = message.slice(4);
         let msg = {
+          user: tags.username,
           url: link,
           channel: `ListaFortnite${streamer}`,
         };
