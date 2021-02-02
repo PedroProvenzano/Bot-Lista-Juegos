@@ -337,6 +337,7 @@ button {
   width: 15vh;
   background-color: rgba(123, 255, 141, 0.808);
 }
+/* Boton de logout */
 #button-logout {
   border: 2px solid rgb(0, 0, 0);
   background-color: rgb(255, 0, 0);
@@ -345,6 +346,8 @@ button {
   padding: 1.2rem;
   margin-top: 1rem;
   user-select: none;
+  position: absolute;
+  top: 80vh;
 }
 #button-logout:hover {
   cursor: pointer;
