@@ -32,12 +32,14 @@ class SocketSectionReaccion {
 
     // Delete URL
     if (msg.type == "deleteUrl") {
+      console.log("pase por deleteURL");
       const getQueue = await QueueVideo.findOne({
         listName: msg.channel,
       }).exec();
       let newQueueDel = [];
       for (let i of getQueue.queue) {
         if (i.title != msg.title) {
+          console.log(`pusheado ${i}`);
           newQueueDel.push(i);
         }
       }
