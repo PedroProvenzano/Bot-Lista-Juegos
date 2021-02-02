@@ -318,7 +318,7 @@ botonRegistroLogin.addEventListener("click", () => {
   }
   username = userName;
   let msg = {
-    secc: "lista",
+    secc: "general",
     type: "login",
     username: userName,
     password: passWord,
