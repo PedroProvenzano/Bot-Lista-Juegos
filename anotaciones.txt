@@ -5,3 +5,7 @@ primero pasa por un check de que seccion esta funcionando
 Ej:
 
     secc: 'lista'   // Las secciones por ahora son, general, lista, reaccion.
+
+
+
+RESOLVER DELETEURL DE SECCION VIDEOREACCION
