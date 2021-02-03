@@ -586,7 +586,6 @@ function agregarAQueue(queue) {
       };
       socket.emit("newOrder", msgDel);
     });
-    });
     contenedorLink.appendChild(equisIMG);
     /*
         let alertIMG = document.createElement('img');
