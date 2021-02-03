@@ -32,14 +32,12 @@ class SocketSectionReaccion {
 
     // Delete URL
     if (msg.type == "deleteUrl") {
-      console.log("pase por deleteURL");
       const getQueue = await QueueVideo.findOne({
         listName: msg.channel,
       }).exec();
       let newQueueDel = [];
       for (let i of getQueue.queue) {
         if (i.title != msg.title) {
-          console.log(`pusheado ${i}`);
           newQueueDel.push(i);
         }
       }
@@ -67,19 +65,16 @@ class SocketSectionReaccion {
     if (msg.type == "getTitle") {
       let newUrl;
       if (msg.url.includes("watch?v=")) {
-        console.log("tenia watch");
         newUrl = msg.url.split("=");
         newUrl = newUrl[1].split("&");
         newUrl = newUrl[0];
       } else if (msg.url.includes("youtu.be")) {
-        console.log("tenia youtu.be");
         if (msg.url.length == 28) {
           newUrl = msg.url.slice(17);
         } else if (msg.url.length == 20) {
           newUrl = msg.url.slice(9);
         }
       }
-      console.log(newUrl);
       fetch(urlAPI + newUrl + "&key=" + process.env.APIKEY)
         .then((res) => res.json())
         .then(async (res) => {
@@ -101,17 +96,19 @@ class SocketSectionReaccion {
               if (err) {
                 console.log(err);
               } else {
-                console.log(`Servidor getTitle Stage ${msg.user}`);
                 let msgQ = {
                   channel: msg.channel,
                   queue: newQueue,
                 };
+                this.client.say(
+                  msg.channel.slice(13),
+                  `Agregado video ${res.items[0].snippet.title} a la lista CoolCat`
+                );
                 this.io.emit("newQueue", msgQ);
                 return;
               }
             }
           );
-          //this.io.emit('newQueue', newMsg);
         });
     }
   }

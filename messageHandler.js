@@ -34,7 +34,6 @@ class MessageHandler {
       let getQueueEmited = await QueueVideo.findOne({
         listName: `ListaFortniteperlitapink`,
       }).exec();
-      console.log(getQueueEmited);
       if (getQueueEmited.isOpen) {
         if (channel == "《💬》-general") {
           console.log("enviando mensaje de discord");
@@ -234,7 +233,6 @@ class MessageHandler {
         }
       } else if (msg.includes("-sumarse")) {
         // Funciona
-        console.log("pase por sumarse");
         if (getList.isOpen) {
           if (getList.userGroup.includes(tags.username)) {
             this.client.say(channel, `Ya estás en la lista`);
@@ -304,14 +302,12 @@ class MessageHandler {
         }
         let link = message.slice(4);
 
-        console.log(`Servidor -sr Stage ${tags.username}`);
         let msg = {
           user: tags.username,
           url: link,
           channel: `ListaFortnite${streamer}`,
         };
         this.io.emit("newVideo", msg);
-        console.log("emmited new video to client " + msg.channel);
       }
     } else if (msg.includes("jugar?")) {
       this.client.say(

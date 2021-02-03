@@ -20,7 +20,6 @@ class MessageHandlerSocket {
   }
 
   async HandleDataBase(msg) {
-    console.log(msg);
     switch (msg.secc) {
       // Seccion Lista
       case "lista":
