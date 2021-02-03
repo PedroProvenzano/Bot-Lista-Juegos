@@ -577,13 +577,15 @@ function agregarAQueue(queue) {
     equisIMG.addEventListener("click", () => {
       let toDelete = document.getElementById(`cont${newID}`);
       toDelete.remove();
-      let newArray = [];
-      for (let i of arrayQueue) {
-        if (i.url != msg.url) {
-          newArray.push(i);
-        }
-      }
-      arrayQueue = newArray;
+      let msgDel = {
+        secc: "reaccion",
+        type: "deleteUrl",
+        channel: channel,
+        title: msg.title,
+        isOpen: isOpenQueue,
+      };
+      socket.emit("newOrder", msgDel);
+    });
     });
     contenedorLink.appendChild(equisIMG);
     /*
