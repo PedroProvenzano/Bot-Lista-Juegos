@@ -336,6 +336,8 @@ button {
   width: 15vh;
 }
 .buttonColors {
+  background-color: rgba(123, 255, 141, 0.808);
+  color: black;
   height: 5vh;
   width: 10vh;
 }

@@ -162,7 +162,6 @@ if (localStorage.save) {
   table.style.borderColor = load.saveBorde;
   customCont.style.borderColor = load.saveBorde;
   html.style.backgroundColor = load.saveFondo;
-  buttonColors.style.color = load.saveColor;
   buttonColors.style.borderColor = load.saveBorde;
   botonLista.style.borderColor = load.saveBorde;
 }
@@ -177,7 +176,6 @@ buttonColors.addEventListener("click", () => {
   table.style.color = colorFuente.value;
   customCont.style.backgroundColor = colorLista.value;
   customCont.style.color = colorFuente.value;
-  buttonColors.style.color = colorFuente.value;
   buttonColors.style.borderColor = colorBorde.value;
   botonContenedorListaJuegos.style.backgroundColor = colorLista.value;
   botonVideoReacciones.style.backgroundColor = colorLista.value;
