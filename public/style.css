@@ -352,8 +352,6 @@ button {
   border-radius: 5%;
   padding: 1.2rem;
   user-select: none;
-  position: absolute;
-  top: 80vh;
 }
 #button-logout:hover {
   cursor: pointer;
