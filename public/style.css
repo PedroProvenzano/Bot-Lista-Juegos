@@ -134,9 +134,16 @@ body {
 /* Seccion Lobby */
 .lobby {
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: all 300ms;
+}
+
+.contenedor-flex-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .contenedor-lista-juego,
