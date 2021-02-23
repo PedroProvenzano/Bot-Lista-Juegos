@@ -37,7 +37,9 @@ const botonVideoReacciones = document.getElementById(
 const contenedorVideoReacciones = document.getElementsByClassName(
   "contenedor-reproductor-lista"
 );
-
+const marcoListaReproduccion = document.getElementById(
+  "marcoListaReproduccion"
+);
 let clicked = true;
 let channel = "";
 let username = "";
@@ -518,9 +520,6 @@ botonVideoReacciones.addEventListener("click", () => {
 let arrayQueue = [];
 const regex = / /gi;
 // DOM
-const marcoListaReproduccion = document.getElementById(
-  "marcoListaReproduccion"
-);
 
 // Recibe lista nueva
 socket.on("newQueue", (msg) => {
