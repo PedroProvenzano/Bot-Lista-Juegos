@@ -306,6 +306,10 @@ button {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
 }
+.setButtonGrid {
+  grid-column-start: first;
+  grid-column-end: end;
+}
 .colorCont {
   display: flex;
   flex-direction: column;

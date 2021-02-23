@@ -153,6 +153,8 @@ if (localStorage.save) {
   botonContenedorListaJuegos.style.backgroundColor = load.saveBackGround;
   botonVideoReacciones.style.backgroundColor = load.saveBackGround;
   botonContenedorListaJuegos.style.color = load.saveColor;
+  botonContenedorListaJuegos.style.borderColor = load.saveBorde;
+  botonVideoReacciones.style.borderColor = load.saveBorde;
   botonVideoReacciones.style.color = load.saveColor;
   marcoListaReproduccion.style.backgroundColor = load.saveBackGround;
   marcoListaReproduccion.style.color = load.saveColor;
@@ -180,6 +182,8 @@ buttonColors.addEventListener("click", () => {
   botonContenedorListaJuegos.style.backgroundColor = colorLista.value;
   botonVideoReacciones.style.backgroundColor = colorLista.value;
 
+  botonContenedorListaJuegos.style.borderColor = colorBorde.value;
+  botonVideoReacciones.style.borderColor = colorBorde.value;
   marcoListaReproduccion.style.backgroundColor = colorLista.value;
   botonContenedorListaJuegos.style.color = colorFuente.value;
   botonVideoReacciones.style.color = colorFuente.value;
