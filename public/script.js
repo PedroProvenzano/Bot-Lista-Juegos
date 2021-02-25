@@ -294,7 +294,7 @@ botonRegistroCrearCuenta.addEventListener("click", () => {
   }
   username = userName;
   let msg = {
-    secc: "lista",
+    secc: "general",
     type: "register",
     username: userName,
     password: passWord,
