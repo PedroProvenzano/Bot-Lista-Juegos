@@ -107,7 +107,7 @@ socket.on("transmition", (msg) => {
       div.innerHTML = `${i}`;
       let usernameDel = `${i}`;
       let botonSacar = document.createElement("img");
-      botonSacar.setAttribute("src", "./equis.png");
+      botonSacar.setAttribute("src", "./assets/equis.png");
       botonSacar.setAttribute("class", "botonX");
       botonSacar.addEventListener("click", () => {
         let msg = {
@@ -122,7 +122,7 @@ socket.on("transmition", (msg) => {
       });
       buttonContainer.appendChild(botonSacar);
       let imgAlert = document.createElement("img");
-      imgAlert.setAttribute("src", "./alert.png");
+      imgAlert.setAttribute("src", "./assets/alert.png");
       imgAlert.setAttribute("class", "alertCont");
       imgAlert.setAttribute("id", "button-alert");
       imgAlert.addEventListener("click", () => {
@@ -585,7 +585,7 @@ function agregarAQueue(queue) {
     //arrayQueue.push(msg.url);
     contenedorLink.appendChild(parrafo);
     let equisIMG = document.createElement("img");
-    equisIMG.setAttribute("src", "./equis.png");
+    equisIMG.setAttribute("src", "./assets/equis.png");
     equisIMG.setAttribute("alt", "cruz");
     equisIMG.setAttribute("id", "boton-link-cruz");
     equisIMG.setAttribute("class", "cruz");
