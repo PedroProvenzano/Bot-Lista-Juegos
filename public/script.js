@@ -58,6 +58,7 @@ const lobbyTitle = document.getElementById("lobby-title");
 const marcoLobby = document.getElementById("marco-lobby");
 const manitoUno = document.getElementById("manito-uno");
 const manitoDos = document.getElementById("manito-dos");
+const personalizarFuente = document.getElementById("personalizar-fuente");
 let clicked = true;
 let channel = "";
 let username = "";
@@ -176,6 +177,7 @@ if (localStorage.saveFuente) {
   botonVideoReacciones.style.color = load.saveColor;
   marcoListaReproduccion.style.color = load.saveColor;
   streamTitle.style.color = load.saveColor;
+  personalizarFuente.style.color = load.saveColor;
 }
 if (localStorage.saveLista) {
   let load = localStorage.getItem("saveLista");
@@ -253,6 +255,7 @@ colorFuente.addEventListener("change", () => {
   table.style.color = colorFuente.value;
   lobbyTitle.style.color = colorFuente.value;
   botonContenedorListaJuegos.style.color = colorFuente.value;
+  personalizarFuente.style.color = colorFuente.value;
   botonVideoReacciones.style.color = colorFuente.value;
   marcoListaReproduccion.style.color = colorFuente.value;
   streamTitle.style.color = colorFuente.value;
