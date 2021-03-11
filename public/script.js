@@ -10,7 +10,6 @@ const ListaUsuarios = document.getElementById("listContainer");
 const streamTitle = document.getElementById("streamTitle");
 // Estilado
 const table = document.getElementById("table");
-const customCont = document.getElementById("customCont");
 const html = document.querySelector("html");
 
 const colorLista = document.getElementById("colorLista");
@@ -154,22 +153,15 @@ if (localStorage.save) {
   load = JSON.parse(load);
   table.style.backgroundColor = load.saveBackGround;
   table.style.color = load.saveColor;
-  customCont.style.backgroundColor = load.saveBackGround;
-  botonContenedorListaJuegos.style.backgroundColor = load.saveBackGround;
   colorListaIcono.style.color = load.saveBackGround;
   colorFuenteIcono.style.color = load.saveColor;
   colorBordeIcono.style.borderColor = load.saveBorde;
   colorFondoIcono.style.backgroundColor = load.saveFondo;
-  botonVideoReacciones.style.backgroundColor = load.saveBackGround;
   botonContenedorListaJuegos.style.color = load.saveColor;
-  botonContenedorListaJuegos.style.borderColor = load.saveBorde;
-  botonVideoReacciones.style.borderColor = load.saveBorde;
   botonVideoReacciones.style.color = load.saveColor;
   marcoListaReproduccion.style.backgroundColor = load.saveBackGround;
   marcoListaReproduccion.style.color = load.saveColor;
-  customCont.style.color = load.saveColor;
   table.style.borderColor = load.saveBorde;
-  customCont.style.borderColor = load.saveBorde;
   html.style.backgroundColor = load.saveFondo;
   botonLista.style.borderColor = load.saveBorde;
 }
@@ -182,21 +174,14 @@ if (localStorage.save) {
 //   };
 //   table.style.backgroundColor = colorLista.value;
 //   table.style.color = colorFuente.value;
-//   customCont.style.backgroundColor = colorLista.value;
-//   customCont.style.color = colorFuente.value;
 //   buttonColors.style.borderColor = colorBorde.value;
-//   botonContenedorListaJuegos.style.backgroundColor = colorLista.value;
-//   botonVideoReacciones.style.backgroundColor = colorLista.value;
 
-//   botonContenedorListaJuegos.style.borderColor = colorBorde.value;
-//   botonVideoReacciones.style.borderColor = colorBorde.value;
 //   marcoListaReproduccion.style.backgroundColor = colorLista.value;
 //   botonContenedorListaJuegos.style.color = colorFuente.value;
 //   botonVideoReacciones.style.color = colorFuente.value;
 //   marcoListaReproduccion.style.color = colorFuente.value;
 
 //   table.style.borderColor = colorBorde.value;
-//   customCont.style.borderColor = colorBorde.value;
 //   html.style.backgroundColor = colorFondo.value;
 //   let save = JSON.stringify(perfilGuardado);
 //   localStorage.setItem("save", save);
@@ -209,9 +194,6 @@ colorLista.addEventListener("change", () => {
   };
   colorListaIcono.style.color = colorLista.value;
   table.style.backgroundColor = colorLista.value;
-  customCont.style.backgroundColor = colorLista.value;
-  botonContenedorListaJuegos.style.backgroundColor = colorLista.value;
-  botonVideoReacciones.style.backgroundColor = colorLista.value;
   marcoListaReproduccion.style.backgroundColor = colorLista.value;
   let save = JSON.stringify(perfilGuardado);
   localStorage.setItem("save", save);
@@ -223,7 +205,6 @@ colorFuente.addEventListener("change", () => {
   };
   colorFuenteIcono.style.color = colorFuente.value;
   table.style.color = colorFuente.value;
-  customCont.style.color = colorFuente.value;
 
   botonContenedorListaJuegos.style.color = colorFuente.value;
   botonVideoReacciones.style.color = colorFuente.value;
@@ -237,10 +218,7 @@ colorBorde.addEventListener("change", () => {
     saveBorde: colorBorde.value,
   };
   colorBordeIcono.style.borderColor = colorBorde.value;
-  botonContenedorListaJuegos.style.borderColor = colorBorde.value;
-  botonVideoReacciones.style.borderColor = colorBorde.value;
   table.style.borderColor = colorBorde.value;
-  customCont.style.borderColor = colorBorde.value;
   let save = JSON.stringify(perfilGuardado);
   localStorage.setItem("save", save);
 });
@@ -575,7 +553,7 @@ botonVideoReacciones.addEventListener("click", () => {
     lobby.style.opacity = "100";
   }, 300);
   setTimeout(() => {
-    contenedorVideoReacciones[0].style.marginTop = "0";
+    contenedorVideoReacciones[0].style.opacity = "100%";
   }, 320);
 });
 
