@@ -562,9 +562,7 @@ socket.on("logoutResponse", (response) => {
   if (response.clientID == clientID) {
     if (response.sts) {
       localStorage.removeItem("LoggedUser");
-      lobby.style.display = "none";
-      intro.style.display = "flex";
-      contenedorIntro.style.marginTop = "2rem";
+      cambioEscena(lobby, intro);
     }
   }
 });
