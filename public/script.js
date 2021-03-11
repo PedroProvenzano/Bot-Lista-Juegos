@@ -159,30 +159,42 @@ socket.on("transmition", (msg) => {
   }
 });
 
-if (localStorage.save) {
-  let load = localStorage.getItem("save");
+if (localStorage.saveFuente) {
+  let load = localStorage.getItem("saveFuente");
   load = JSON.parse(load);
   letraUno.style.color = load.saveColor;
   letraDos.style.color = load.saveColor;
-  table.style.backgroundColor = load.saveBackGround;
   table.style.color = load.saveColor;
   lobbyTitle.style.color = load.saveColor;
   manitoUno.style.color = load.saveColor;
   manitoDos.style.color = load.saveColor;
+  botonContenedorListaJuegos.style.color = load.saveColor;
+  botonVideoReacciones.style.color = load.saveColor;
+  marcoListaReproduccion.style.color = load.saveColor;
+}
+if (localStorage.saveLista) {
+  let load = localStorage.getItem("saveLista");
+  load = JSON.parse(load);
+  table.style.backgroundColor = load.saveBackGround;
   lobbyTitleFondo.style.backgroundColor = load.saveBackGround;
   listaJuegoFondo.style.backgroundColor = load.saveBackGround;
   videoReaccionFondo.style.backgroundColor = load.saveBackGround;
   colorListaIcono.style.backgroundColor = load.saveBackGround;
-  colorBordeIcono.style.borderColor = load.saveBorde;
-  colorFondoIcono.style.backgroundColor = load.saveFondo;
-  botonContenedorListaJuegos.style.color = load.saveColor;
-  botonVideoReacciones.style.color = load.saveColor;
   marcoListaReproduccion.style.backgroundColor = load.saveBackGround;
-  marcoListaReproduccion.style.color = load.saveColor;
+}
+if (localStorage.saveBorde) {
+  let load = localStorage.getItem("saveBorde");
+  load = JSON.parse(load);
+  colorBordeIcono.style.borderColor = load.saveBorde;
   table.style.borderColor = load.saveBorde;
+  botonLista.style.borderColor = load.saveBorde;
+}
+if (localStorage.saveFondo) {
+  let load = localStorage.getItem("saveFondo");
+  load = JSON.parse(load);
+  colorFondoIcono.style.backgroundColor = load.saveFondo;
   html.style.backgroundColor = load.saveFondo;
   colorListaIconoDos.style.color = load.saveFondo;
-  botonLista.style.borderColor = load.saveBorde;
 }
 // buttonColors.addEventListener("click", () => {
 //   let perfilGuardado = {
@@ -218,7 +230,7 @@ colorLista.addEventListener("change", () => {
   table.style.backgroundColor = colorLista.value;
   marcoListaReproduccion.style.backgroundColor = colorLista.value;
   let save = JSON.stringify(perfilGuardado);
-  localStorage.setItem("save", save);
+  localStorage.setItem("saveLista", save);
 });
 
 colorFuente.addEventListener("change", () => {
@@ -235,7 +247,7 @@ colorFuente.addEventListener("change", () => {
   botonVideoReacciones.style.color = colorFuente.value;
   marcoListaReproduccion.style.color = colorFuente.value;
   let save = JSON.stringify(perfilGuardado);
-  localStorage.setItem("save", save);
+  localStorage.setItem("saveFuente", save);
 });
 
 colorBorde.addEventListener("change", () => {
@@ -245,7 +257,7 @@ colorBorde.addEventListener("change", () => {
   colorBordeIcono.style.borderColor = colorBorde.value;
   table.style.borderColor = colorBorde.value;
   let save = JSON.stringify(perfilGuardado);
-  localStorage.setItem("save", save);
+  localStorage.setItem("saveBorde", save);
 });
 
 colorFondo.addEventListener("change", () => {
@@ -256,7 +268,7 @@ colorFondo.addEventListener("change", () => {
   colorListaIconoDos.style.color = colorFondo.value;
   html.style.backgroundColor = colorFondo.value;
   let save = JSON.stringify(perfilGuardado);
-  localStorage.setItem("save", save);
+  localStorage.setItem("saveFondo", save);
 });
 
 botonLista.addEventListener("click", () => {
@@ -334,7 +346,7 @@ function cambioEscena(actual, contenedorActual, objetivo, contenedorObj) {
     actual.style.display = "none";
   }, 500);
   setTimeout(() => {
-    objetivo.style.mopacity = "100%";
+    objetivo.style.opacity = "100%";
   }, 600);
 }
 
