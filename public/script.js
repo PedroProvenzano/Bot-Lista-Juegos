@@ -538,22 +538,20 @@ botonContenedorListaJuegos.addEventListener("click", () => {
   setTimeout(() => {
     contenido.style.display = "flex";
     lobby.style.display = "none";
-    lobby.style.opacity = "100";
   }, 300);
   setTimeout(() => {
-    contenido.style.marginTop = "0";
+    contenido.style.opacity = "100%";
   }, 320);
 });
 
 botonVideoReacciones.addEventListener("click", () => {
-  lobby.style.opacity = "0";
+  lobby.style.opacity = "0%";
   setTimeout(() => {
     videoReaccion.style.display = "flex";
     lobby.style.display = "none";
-    lobby.style.opacity = "100";
   }, 300);
   setTimeout(() => {
-    contenedorVideoReacciones[0].style.opacity = "100%";
+    videoReaccion.style.opacity = "100%";
   }, 320);
 });
 
@@ -717,17 +715,18 @@ function getNextOne(array) {
 }
 
 botonVolver.addEventListener("click", () => {
-  contenido.style.marginTop = "-64rem";
+  contenido.style.opacity = "0%";
   setTimeout(() => {
     contenido.style.display = "none";
     lobby.style.display = "flex";
   }, 300);
 });
 botonVolverVideo.addEventListener("click", () => {
-  contenedorVideoReacciones[0].style.marginTop = "-64rem";
+  videoReaccion.style.opacity = "0%";
   setTimeout(() => {
     videoReaccion.style.display = "none";
     lobby.style.display = "flex";
+    lobby.style.opacity = "100%";
   }, 300);
 });
 
