@@ -38,6 +38,10 @@ const contenedorVideoReacciones = document.getElementsByClassName(
 const marcoListaReproduccion = document.getElementById(
   "marcoListaReproduccion"
 );
+const contenedorLogin = document.getElementById("contenedor-login");
+const contenedorCrearCuenta = document.getElementById(
+  "contenedor-crear-cuenta"
+);
 // Dom Inputs
 const colorListaIcono = document.getElementById("colorListaIcono");
 const colorListaIconoDos = document.getElementById("colorListaIconoDos");
@@ -51,7 +55,7 @@ const lobbyTitleFondo = document.getElementById("lobby-title-fondo");
 const listaJuegoFondo = document.getElementById("lista-juego-fondo");
 const videoReaccionFondo = document.getElementById("video-reaccion-fondo");
 const lobbyTitle = document.getElementById("lobby-title");
-
+const marcoLobby = document.getElementById("marco-lobby");
 const manitoUno = document.getElementById("manito-uno");
 const manitoDos = document.getElementById("manito-dos");
 let clicked = true;
@@ -171,6 +175,7 @@ if (localStorage.saveFuente) {
   botonContenedorListaJuegos.style.color = load.saveColor;
   botonVideoReacciones.style.color = load.saveColor;
   marcoListaReproduccion.style.color = load.saveColor;
+  streamTitle.style.color = load.saveColor;
 }
 if (localStorage.saveLista) {
   let load = localStorage.getItem("saveLista");
@@ -186,7 +191,11 @@ if (localStorage.saveBorde) {
   let load = localStorage.getItem("saveBorde");
   load = JSON.parse(load);
   colorBordeIcono.style.borderColor = load.saveBorde;
+  contenedorLogin.style.borderColor = load.saveBorde;
   table.style.borderColor = load.saveBorde;
+  contenedorIntro.style.borderColor = load.saveBorde;
+  contenedorCrearCuenta.style.borderColor = load.saveBorde;
+  marcoLobby.style.borderColor = load.saveBorde;
   botonLista.style.borderColor = load.saveBorde;
 }
 if (localStorage.saveFondo) {
@@ -246,6 +255,7 @@ colorFuente.addEventListener("change", () => {
   botonContenedorListaJuegos.style.color = colorFuente.value;
   botonVideoReacciones.style.color = colorFuente.value;
   marcoListaReproduccion.style.color = colorFuente.value;
+  streamTitle.style.color = colorFuente.value;
   let save = JSON.stringify(perfilGuardado);
   localStorage.setItem("saveFuente", save);
 });
@@ -255,6 +265,10 @@ colorBorde.addEventListener("change", () => {
     saveBorde: colorBorde.value,
   };
   colorBordeIcono.style.borderColor = colorBorde.value;
+  contenedorIntro.style.borderColor = colorBorde.value;
+  contenedorLogin.style.borderColor = colorBorde.value;
+  contenedorCrearCuenta.style.borderColor = colorBorde.value;
+  marcoLobby.style.borderColor = colorBorde.value;
   table.style.borderColor = colorBorde.value;
   let save = JSON.stringify(perfilGuardado);
   localStorage.setItem("saveBorde", save);
@@ -306,15 +320,13 @@ const botonIntroNo = document.getElementById("boton-intro-no");
 
 // Crear cuenta
 const crearCuenta = document.getElementById("crear-cuenta");
-const contenedorCrearCuenta = document.getElementById(
-  "contenedor-crear-cuenta"
-);
+
 const botonVolverCrearCuenta = document.getElementById(
   "boton-volver-crear-cuenta"
 );
 // Login
 const login = document.getElementById("login");
-const contenedorLogin = document.getElementById("contenedor-login");
+
 const botonVolverLogin = document.getElementById("boton-volver-login");
 
 // Botones Intro    Tenes cuenta?
@@ -435,6 +447,7 @@ socket.on("loginResponse", (response) => {
 
       login.style.display = "none";
       lobby.style.display = "flex";
+      lobby.style.opacity = "100%";
       inputLoginPassword.value = "";
       inputLoginUsuario.value = "";
       let LoggedUser = {
