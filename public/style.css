@@ -68,6 +68,7 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  transition: all 600ms;
 }
 .contenedor-intro {
   border: #21023e 17px solid;
@@ -118,6 +119,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 600ms;
 }
 .contenedor-crear-cuenta {
   transition: all 600ms;
@@ -147,6 +149,7 @@ body {
 /* Seccion Login */
 .login {
   opacity: 0%;
+  transition: all 600ms;
   flex-direction: column;
   align-items: center;
   justify-content: center;
