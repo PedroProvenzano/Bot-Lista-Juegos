@@ -40,11 +40,20 @@ const marcoListaReproduccion = document.getElementById(
 );
 // Dom Inputs
 const colorListaIcono = document.getElementById("colorListaIcono");
+const colorListaIconoDos = document.getElementById("colorListaIconoDos");
 const colorFuenteIcono = document.getElementById("colorFuenteIcono");
 const colorBordeIcono = document.getElementById("colorBordeIcono");
 const colorFondoIcono = document.getElementById("colorFondoIcono");
 const letraUno = document.getElementById("letra-uno-fuente");
 const letraDos = document.getElementById("letra-dos-fuente");
+// Fondos de lobby
+const lobbyTitleFondo = document.getElementById("lobby-title-fondo");
+const listaJuegoFondo = document.getElementById("lista-juego-fondo");
+const videoReaccionFondo = document.getElementById("video-reaccion-fondo");
+const lobbyTitle = document.getElementById("lobby-title");
+
+const manitoUno = document.getElementById("manito-uno");
+const manitoDos = document.getElementById("manito-dos");
 let clicked = true;
 let channel = "";
 let username = "";
@@ -157,6 +166,12 @@ if (localStorage.save) {
   letraDos.style.color = load.saveColor;
   table.style.backgroundColor = load.saveBackGround;
   table.style.color = load.saveColor;
+  lobbyTitle.style.color = load.saveColor;
+  manitoUno.style.color = load.saveColor;
+  manitoDos.style.color = load.saveColor;
+  lobbyTitleFondo.style.backgroundColor = load.saveBackGround;
+  listaJuegoFondo.style.backgroundColor = load.saveBackGround;
+  videoReaccionFondo.style.backgroundColor = load.saveBackGround;
   colorListaIcono.style.backgroundColor = load.saveBackGround;
   colorBordeIcono.style.borderColor = load.saveBorde;
   colorFondoIcono.style.backgroundColor = load.saveFondo;
@@ -166,6 +181,7 @@ if (localStorage.save) {
   marcoListaReproduccion.style.color = load.saveColor;
   table.style.borderColor = load.saveBorde;
   html.style.backgroundColor = load.saveFondo;
+  colorListaIconoDos.style.color = load.saveFondo;
   botonLista.style.borderColor = load.saveBorde;
 }
 // buttonColors.addEventListener("click", () => {
@@ -195,6 +211,9 @@ colorLista.addEventListener("change", () => {
   let perfilGuardado = {
     saveBackGround: colorLista.value,
   };
+  lobbyTitleFondo.style.backgroundColor = colorLista.value;
+  listaJuegoFondo.style.backgroundColor = colorLista.value;
+  videoReaccionFondo.style.backgroundColor = colorLista.value;
   colorListaIcono.style.backgroundColor = colorLista.value;
   table.style.backgroundColor = colorLista.value;
   marcoListaReproduccion.style.backgroundColor = colorLista.value;
@@ -208,8 +227,10 @@ colorFuente.addEventListener("change", () => {
   };
   letraUno.style.color = colorFuente.value;
   letraDos.style.color = colorFuente.value;
+  manitoUno.style.color = colorFuente.value;
+  manitoDos.style.color = colorFuente.value;
   table.style.color = colorFuente.value;
-
+  lobbyTitle.style.color = colorFuente.value;
   botonContenedorListaJuegos.style.color = colorFuente.value;
   botonVideoReacciones.style.color = colorFuente.value;
   marcoListaReproduccion.style.color = colorFuente.value;
@@ -232,6 +253,7 @@ colorFondo.addEventListener("change", () => {
     saveFondo: colorFondo.value,
   };
   colorFondoIcono.style.backgroundColor = colorFondo.value;
+  colorListaIconoDos.style.color = colorFondo.value;
   html.style.backgroundColor = colorFondo.value;
   let save = JSON.stringify(perfilGuardado);
   localStorage.setItem("save", save);
