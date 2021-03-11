@@ -617,7 +617,9 @@ button {
   -ms-flex-pack: center;
   justify-content: center;
 }
-
+.linkReproduccion p {
+  width: 70%;
+}
 .cruz,
 .alert {
   margin-left: 10px;
