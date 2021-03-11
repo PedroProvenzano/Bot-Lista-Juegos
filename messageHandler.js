@@ -39,6 +39,7 @@ class MessageHandler {
           console.log("enviando mensaje de discord");
           let mensajeDisc = message.slice(4);
           let msg = {
+            user: message.author.username,
             url: mensajeDisc,
             channel: `ListaFortniteperlitapink`,
           };
