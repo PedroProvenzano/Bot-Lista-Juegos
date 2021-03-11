@@ -484,8 +484,8 @@ button {
 }
 .spam {
   position: absolute;
-  top: 90vh;
-  left: 90vw;
+  top: 92vh;
+  left: 7vw;
   font-size: 1rem;
   font-style: italic;
 }
