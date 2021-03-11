@@ -261,6 +261,7 @@ body {
   z-index: 1;
 }
 .lobby-personalizar {
+  filter: drop-shadow(5px 6px 3px rgba(0, 0, 0, 0.5));
   position: relative;
   top: 270px;
   left: -30px;
@@ -629,7 +630,7 @@ button {
 }
 
 .linkReproduccion:nth-of-type(2n) {
-  background-color: #b28035;
+  background-color: rgba(255, 255, 255, 0.096);
 }
 
 .linkReproduccion:hover {
