@@ -10,10 +10,10 @@
   <body>
     <section class="intro" id="intro">
       <div class="contenedor-intro" id="contenedor-intro">
-        <h3 class="texto-intro">¿Tenés cuenta?</h3>
+        <!-- <h3 class="texto-intro">Tene's cuenta?</h3> -->
         <div class="contenedor-intro-botones" id="contenedor-intro-botones">
-          <div class="boton-intro-si" id="boton-intro-si">Sí</div>
-          <div class="boton-intro-no" id="boton-intro-no">No</div>
+          <div class="boton-intro-si" id="boton-intro-si">Login</div>
+          <div class="boton-intro-no" id="boton-intro-no">Crear cuenta</div>
         </div>
       </div>
     </section>
@@ -35,7 +35,9 @@
           <div class="boton-log" id="boton-volver-crear-cuenta">Volver</div>
           <div class="boton-log" id="boton-crear-cuenta">Registrar</div>
         </div>
-        <p>AVISO: la contraseña no es la de twitch, es propia de esta pagina</p>
+        <p style="font-size: 1.2vw">
+          AVISO: la contraseña no es la de twitch, es propia de esta pagina
+        </p>
         <p class="console" id="console-crear-cuenta"></p>
       </div>
     </section>
@@ -57,43 +59,64 @@
           <div class="boton-log" id="boton-volver-login">Volver</div>
           <div class="boton-log" id="boton-login">Conectar</div>
         </div>
-        <p>AVISO: la contraseña no es la de twitch, es propia de esta pagina</p>
+        <p style="font-size: 1.2vw">
+          AVISO: la contraseña no es la de twitch, es propia de esta pagina
+        </p>
         <p class="console" id="console-login"></p>
       </div>
     </section>
 
     <section class="lobby" id="lobby">
-      <h1 class="lobbyTitle">Lobby</h1>
-      <div class="contenedor-flex-row">
-        <div class="contenedor-lista-juego" id="contenedor-lista-juego">
-          Fila para Juegos
+      <div class="marco-lobby">
+        <div class="cont-lobby-title">
+          <p class="lobbyTitle">Lobby</p>
+          <div class="lobby-title-fondo"></div>
         </div>
-        <div class="contenedor-video-reaccion" id="contenedor-video-reaccion">
-          Video Reacciones
+        <div class="contenedor-flex-row">
+          <div class="contenedor-lista-juego" id="contenedor-lista-juego">
+            <p>Fila para Juegos</p>
+            <div class="lista-juego-fondo">
+              <i class="far fa-hand-point-right"></i>
+            </div>
+          </div>
+          <div class="contenedor-video-reaccion" id="contenedor-video-reaccion">
+            <p>
+              Video Reac <br />
+              ciones
+            </p>
+            <div class="video-reaccion-fondo">
+              <i class="far fa-hand-point-right"></i>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="customCont" id="customCont">
-        <div class="colorCont">
-          <p>Color Lista</p>
-          <input type="color" id="colorLista" />
-        </div>
-        <div class="colorCont">
-          <p>Color Borde</p>
-          <input type="color" id="colorBorde" />
-        </div>
-        <div class="colorCont">
-          <p>Color Fuente</p>
-          <input type="color" id="colorFuente" />
-        </div>
-        <div class="colorCont">
-          <p>Color Fondo</p>
-          <input type="color" id="colorFondo" />
-        </div>
-        <div class="colorCont">
-          <div class="boton buttonColors" id="buttonColors">Set</div>
-        </div>
-        <div class="colorCont">
-          <div class="botonSet" id="button-logout">LogOut</div>
+        <div class="lobby-personalizar" id="customCont">
+          <p>Personalizar</p>
+          <div class="cont-personalizar-botones">
+            <div class="colorCont">
+              <div class="colorListaParaInput">
+                <i class="fas fa-bars" id="colorListaIcono"></i>
+              </div>
+              <input type="color" id="colorLista" />
+            </div>
+            <div class="colorCont" id="colorFuenteIcono">
+              <p class="max-letra-per">A</p>
+              <p class="min-letra-per">a</p>
+              <input type="color" id="colorFuente" />
+            </div>
+            <div class="colorCont">
+              <div class="colorBordeParaInput" id="colorBordeIcono"></div>
+              <input type="color" id="colorBorde" />
+            </div>
+            <div class="colorCont">
+              <div class="colorFondoParaInput">
+                <div class="colorFondoFondo" id="colorFondoIcono"></div>
+              </div>
+              <input type="color" id="colorFondo" />
+            </div>
+          </div>
+          <div class="button-cont-personalizar">
+            <div class="botonSet" id="button-logout">LogOut</div>
+          </div>
         </div>
       </div>
     </section>
@@ -114,12 +137,7 @@
         </div>
         <div class="listContainer" id="listContainer"></div>
       </div>
-      <div class="spam">
-        <p>Hecho por Mrklus</p>
-      </div>
-      <div class="colorCont">
-        <div class="boton buttonList" id="buttonList">Lista Abierta</div>
-      </div>
+      <div class="boton buttonList" id="buttonList">Lista Abierta</div>
     </section>
 
     <section class="video-reaccion" id="video-reaccion">
@@ -140,6 +158,10 @@
         <div class="marcoListaReproduccion" id="marcoListaReproduccion"></div>
       </div>
     </section>
+    <script
+      src="https://kit.fontawesome.com/22b0f2d94c.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./script.js"></script>
   </body>

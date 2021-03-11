@@ -17,7 +17,6 @@ const colorLista = document.getElementById("colorLista");
 const colorBorde = document.getElementById("colorBorde");
 const colorFuente = document.getElementById("colorFuente");
 const colorFondo = document.getElementById("colorFondo");
-const buttonColors = document.getElementById("buttonColors");
 // Botones
 const botonLista = document.getElementById("buttonList");
 const botonVolver = document.getElementById("boton-volver");
@@ -40,6 +39,11 @@ const contenedorVideoReacciones = document.getElementsByClassName(
 const marcoListaReproduccion = document.getElementById(
   "marcoListaReproduccion"
 );
+// Dom Inputs
+const colorListaIcono = document.getElementById("colorListaIcono");
+const colorFuenteIcono = document.getElementById("colorFuenteIcono");
+const colorBordeIcono = document.getElementById("colorBordeIcono");
+const colorFondoIcono = document.getElementById("colorFondoIcono");
 let clicked = true;
 let channel = "";
 let username = "";
@@ -151,6 +155,10 @@ if (localStorage.save) {
   table.style.color = load.saveColor;
   customCont.style.backgroundColor = load.saveBackGround;
   botonContenedorListaJuegos.style.backgroundColor = load.saveBackGround;
+  colorListaIcono.style.color = load.saveBackGround;
+  colorFuenteIcono.style.color = load.saveColor;
+  colorBordeIcono.style.borderColor = load.saveBorde;
+  colorFondoIcono.style.backgroundColor = load.saveFondo;
   botonVideoReacciones.style.backgroundColor = load.saveBackGround;
   botonContenedorListaJuegos.style.color = load.saveColor;
   botonContenedorListaJuegos.style.borderColor = load.saveBorde;
@@ -162,33 +170,85 @@ if (localStorage.save) {
   table.style.borderColor = load.saveBorde;
   customCont.style.borderColor = load.saveBorde;
   html.style.backgroundColor = load.saveFondo;
-  buttonColors.style.borderColor = load.saveBorde;
   botonLista.style.borderColor = load.saveBorde;
 }
-buttonColors.addEventListener("click", () => {
+// buttonColors.addEventListener("click", () => {
+//   let perfilGuardado = {
+//     saveBackGround: colorLista.value,
+//     saveColor: colorFuente.value,
+//     saveBorde: colorBorde.value,
+//     saveFondo: colorFondo.value,
+//   };
+//   table.style.backgroundColor = colorLista.value;
+//   table.style.color = colorFuente.value;
+//   customCont.style.backgroundColor = colorLista.value;
+//   customCont.style.color = colorFuente.value;
+//   buttonColors.style.borderColor = colorBorde.value;
+//   botonContenedorListaJuegos.style.backgroundColor = colorLista.value;
+//   botonVideoReacciones.style.backgroundColor = colorLista.value;
+
+//   botonContenedorListaJuegos.style.borderColor = colorBorde.value;
+//   botonVideoReacciones.style.borderColor = colorBorde.value;
+//   marcoListaReproduccion.style.backgroundColor = colorLista.value;
+//   botonContenedorListaJuegos.style.color = colorFuente.value;
+//   botonVideoReacciones.style.color = colorFuente.value;
+//   marcoListaReproduccion.style.color = colorFuente.value;
+
+//   table.style.borderColor = colorBorde.value;
+//   customCont.style.borderColor = colorBorde.value;
+//   html.style.backgroundColor = colorFondo.value;
+//   let save = JSON.stringify(perfilGuardado);
+//   localStorage.setItem("save", save);
+// });
+
+// Nuevo sistema de input
+colorLista.addEventListener("change", () => {
   let perfilGuardado = {
     saveBackGround: colorLista.value,
-    saveColor: colorFuente.value,
-    saveBorde: colorBorde.value,
-    saveFondo: colorFondo.value,
   };
+  colorListaIcono.style.color = colorLista.value;
   table.style.backgroundColor = colorLista.value;
-  table.style.color = colorFuente.value;
   customCont.style.backgroundColor = colorLista.value;
-  customCont.style.color = colorFuente.value;
-  buttonColors.style.borderColor = colorBorde.value;
   botonContenedorListaJuegos.style.backgroundColor = colorLista.value;
   botonVideoReacciones.style.backgroundColor = colorLista.value;
-
-  botonContenedorListaJuegos.style.borderColor = colorBorde.value;
-  botonVideoReacciones.style.borderColor = colorBorde.value;
   marcoListaReproduccion.style.backgroundColor = colorLista.value;
+  let save = JSON.stringify(perfilGuardado);
+  localStorage.setItem("save", save);
+});
+
+colorFuente.addEventListener("change", () => {
+  let perfilGuardado = {
+    saveColor: colorFuente.value,
+  };
+  colorFuenteIcono.style.color = colorFuente.value;
+  table.style.color = colorFuente.value;
+  customCont.style.color = colorFuente.value;
+
   botonContenedorListaJuegos.style.color = colorFuente.value;
   botonVideoReacciones.style.color = colorFuente.value;
   marcoListaReproduccion.style.color = colorFuente.value;
+  let save = JSON.stringify(perfilGuardado);
+  localStorage.setItem("save", save);
+});
 
+colorBorde.addEventListener("change", () => {
+  let perfilGuardado = {
+    saveBorde: colorBorde.value,
+  };
+  colorBordeIcono.style.borderColor = colorBorde.value;
+  botonContenedorListaJuegos.style.borderColor = colorBorde.value;
+  botonVideoReacciones.style.borderColor = colorBorde.value;
   table.style.borderColor = colorBorde.value;
   customCont.style.borderColor = colorBorde.value;
+  let save = JSON.stringify(perfilGuardado);
+  localStorage.setItem("save", save);
+});
+
+colorFondo.addEventListener("change", () => {
+  let perfilGuardado = {
+    saveFondo: colorFondo.value,
+  };
+  colorFondoIcono.style.backgroundColor = colorFondo.value;
   html.style.backgroundColor = colorFondo.value;
   let save = JSON.stringify(perfilGuardado);
   localStorage.setItem("save", save);
@@ -263,13 +323,13 @@ botonVolverLogin.addEventListener("click", () => {
 
 // Funcion desaparecer
 function cambioEscena(actual, contenedorActual, objetivo, contenedorObj) {
-  contenedorActual.style.marginTop = "-20rem";
+  actual.style.opacity = "0%";
   setTimeout(() => {
     objetivo.style.display = "flex";
+    actual.style.display = "none";
   }, 500);
   setTimeout(() => {
-    actual.style.display = "none";
-    contenedorObj.style.marginTop = "2rem";
+    objetivo.style.mopacity = "100%";
   }, 600);
 }
 
