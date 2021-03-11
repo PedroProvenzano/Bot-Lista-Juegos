@@ -46,6 +46,7 @@ io.on("connection", (socket) => {
 
 clientDiscord.on("message", (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
+  console.log(message.author);
   console.log(message.channel.name);
   console.log(message.content);
   connection.discordHandle(message);

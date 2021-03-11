@@ -207,27 +207,6 @@ if (localStorage.saveFondo) {
   html.style.backgroundColor = load.saveFondo;
   colorListaIconoDos.style.color = load.saveFondo;
 }
-// buttonColors.addEventListener("click", () => {
-//   let perfilGuardado = {
-//     saveBackGround: colorLista.value,
-//     saveColor: colorFuente.value,
-//     saveBorde: colorBorde.value,
-//     saveFondo: colorFondo.value,
-//   };
-//   table.style.backgroundColor = colorLista.value;
-//   table.style.color = colorFuente.value;
-//   buttonColors.style.borderColor = colorBorde.value;
-
-//   marcoListaReproduccion.style.backgroundColor = colorLista.value;
-//   botonContenedorListaJuegos.style.color = colorFuente.value;
-//   botonVideoReacciones.style.color = colorFuente.value;
-//   marcoListaReproduccion.style.color = colorFuente.value;
-
-//   table.style.borderColor = colorBorde.value;
-//   html.style.backgroundColor = colorFondo.value;
-//   let save = JSON.stringify(perfilGuardado);
-//   localStorage.setItem("save", save);
-// });
 
 // Nuevo sistema de input
 colorLista.addEventListener("change", () => {
