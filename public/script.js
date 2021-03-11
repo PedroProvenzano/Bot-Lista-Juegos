@@ -59,6 +59,7 @@ if (localStorage.LoggedUser) {
   authAccessToken = loadData.authToken;
   intro.style.display = "none";
   lobby.style.display = "flex";
+  lobby.style.opacity = "100%";
 }
 
 if (localStorage.channel) {
