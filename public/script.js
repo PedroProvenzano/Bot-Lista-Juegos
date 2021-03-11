@@ -43,6 +43,8 @@ const colorListaIcono = document.getElementById("colorListaIcono");
 const colorFuenteIcono = document.getElementById("colorFuenteIcono");
 const colorBordeIcono = document.getElementById("colorBordeIcono");
 const colorFondoIcono = document.getElementById("colorFondoIcono");
+const letraUno = document.getElementById("letra-uno-fuente");
+const letraDos = document.getElementById("letra-dos-fuente");
 let clicked = true;
 let channel = "";
 let username = "";
@@ -151,10 +153,11 @@ socket.on("transmition", (msg) => {
 if (localStorage.save) {
   let load = localStorage.getItem("save");
   load = JSON.parse(load);
+  letraUno.style.color = load.saveColor;
+  letraDos.style.color = load.saveColor;
   table.style.backgroundColor = load.saveBackGround;
   table.style.color = load.saveColor;
-  colorListaIcono.style.color = load.saveBackGround;
-  colorFuenteIcono.style.color = load.saveColor;
+  colorListaIcono.style.backgroundColor = load.saveBackGround;
   colorBordeIcono.style.borderColor = load.saveBorde;
   colorFondoIcono.style.backgroundColor = load.saveFondo;
   botonContenedorListaJuegos.style.color = load.saveColor;
@@ -192,7 +195,7 @@ colorLista.addEventListener("change", () => {
   let perfilGuardado = {
     saveBackGround: colorLista.value,
   };
-  colorListaIcono.style.color = colorLista.value;
+  colorListaIcono.style.backgroundColor = colorLista.value;
   table.style.backgroundColor = colorLista.value;
   marcoListaReproduccion.style.backgroundColor = colorLista.value;
   let save = JSON.stringify(perfilGuardado);
@@ -203,7 +206,8 @@ colorFuente.addEventListener("change", () => {
   let perfilGuardado = {
     saveColor: colorFuente.value,
   };
-  colorFuenteIcono.style.color = colorFuente.value;
+  letraUno.style.color = colorFuente.value;
+  letraDos.style.color = colorFuente.value;
   table.style.color = colorFuente.value;
 
   botonContenedorListaJuegos.style.color = colorFuente.value;
@@ -719,6 +723,7 @@ botonVolver.addEventListener("click", () => {
   setTimeout(() => {
     contenido.style.display = "none";
     lobby.style.display = "flex";
+    lobby.style.opacity = "100%";
   }, 300);
 });
 botonVolverVideo.addEventListener("click", () => {
