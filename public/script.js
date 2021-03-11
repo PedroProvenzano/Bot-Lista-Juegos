@@ -329,40 +329,39 @@ const botonVolverCrearCuenta = document.getElementById(
 );
 // Login
 const login = document.getElementById("login");
-
 const botonVolverLogin = document.getElementById("boton-volver-login");
 
 // Botones Intro    Tenes cuenta?
 
 // Si
 botonIntroSi.addEventListener("click", () => {
-  cambioEscena(intro, contenedorIntro, login, contenedorLogin);
+  cambioEscena(intro, login);
 });
 
 // No
 botonIntroNo.addEventListener("click", () => {
-  cambioEscena(intro, contenedorIntro, crearCuenta, contenedorCrearCuenta);
+  cambioEscena(intro, crearCuenta);
 });
 
 // Botones crear cuenta
 // Volver
 botonVolverCrearCuenta.addEventListener("click", () => {
-  cambioEscena(crearCuenta, contenedorCrearCuenta, intro, contenedorIntro);
+  cambioEscena(crearCuenta, intro);
 });
 botonVolverLogin.addEventListener("click", () => {
-  cambioEscena(login, contenedorLogin, intro, contenedorIntro);
+  cambioEscena(login, intro);
 });
 
 // Funcion desaparecer
-function cambioEscena(actual, contenedorActual, objetivo, contenedorObj) {
+function cambioEscena(actual, objetivo) {
   actual.style.opacity = "0%";
   setTimeout(() => {
     objetivo.style.display = "flex";
     actual.style.display = "none";
-  }, 500);
+  }, 200);
   setTimeout(() => {
     objetivo.style.opacity = "100%";
-  }, 600);
+  }, 300);
 }
 
 // Botones registro
@@ -401,7 +400,7 @@ socket.on("registerResponse", (response) => {
   if (response.clientID == clientID) {
     // Check respuesta del servidor
     if (response.sts) {
-      cambioEscena(crearCuenta, contenedorCrearCuenta, login, contenedorLogin);
+      cambioEscena(crearCuenta, login);
       inputCrearCuentaPassword.value = "";
       inputCrearCuentaUser.value = "";
       consolaLogin.innerText = response.msg;
@@ -448,9 +447,8 @@ socket.on("loginResponse", (response) => {
       localStorage.setItem("channel", channel);
       streamTitle.innerText = `Fila de ${response.username}`;
 
-      login.style.display = "none";
-      lobby.style.display = "flex";
-      lobby.style.opacity = "100%";
+      cambioEscena(login, lobby);
+
       inputLoginPassword.value = "";
       inputLoginUsuario.value = "";
       let LoggedUser = {
