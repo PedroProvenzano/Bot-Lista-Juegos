@@ -13,6 +13,10 @@ const QueueVideoSchema = mongoose.Schema({
     type: Boolean,
     required: false,
   },
+  currentVideo: {
+    type: String,
+    required: false,
+  },
   date: { type: Date, default: Date.now },
 });
 

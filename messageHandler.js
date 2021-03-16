@@ -195,6 +195,16 @@ class MessageHandler {
           }
         }
       }
+      if (msg.includes("-currentvideo")) {
+        let listaCurrentVideo = await QueueVideo.findOne({
+          listName: `ListaFortnite${streamer}`,
+        }).exec();
+        this.client.say(
+          channel,
+          `El video actual es, ${listaCurrentVideo.currentVideo}`
+        );
+        return;
+      }
       if (msg.includes("-restarse")) {
         let estaEnLista = false;
         for (let i of getList.userGroup) {

@@ -1,7 +1,6 @@
 require("dotenv/config");
 const fetch = require("node-fetch");
 let urlAPI = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=";
-
 // Modelos
 const ArrayGroup = require("../Models/ArrayGroup");
 const ClientUser = require("../Models/ClientUser");
@@ -44,7 +43,12 @@ class SocketSectionReaccion {
 
       QueueVideo.findOneAndUpdate(
         { listName: msg.channel },
-        { queue: newQueueDel, listName: msg.channel, isOpen: msg.isOpenQueue },
+        {
+          queue: newQueueDel,
+          listName: msg.channel,
+          isOpen: msg.isOpenQueue,
+          currentVideo: msg.title,
+        },
         (err, result) => {
           if (err) {
             console.log(err);
