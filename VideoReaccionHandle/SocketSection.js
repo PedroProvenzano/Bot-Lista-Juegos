@@ -64,7 +64,23 @@ class SocketSectionReaccion {
         }
       );
     }
-
+    // Actualizar current video inicial
+    if (msg.type == "currentVideo") {
+      QueueVideo.findOneAndUpdate(
+        { listName: msg.channel },
+        {
+          currentVideo: msg.title,
+        },
+        (err, result) => {
+          if (err) {
+            console.log(err);
+            return;
+          } else {
+            return;
+          }
+        }
+      );
+    }
     // Get Title
     if (msg.type == "getTitle") {
       let newUrl;

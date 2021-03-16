@@ -775,3 +775,12 @@ socket.on("refreshQueueList", (msg) => {
     agregarAQueue(msg.queue);
   }
 });
+
+// On Start
+let msgCurrentVideo = {
+  secc: "reaccion",
+  type: "currentVideo",
+  channel: channel,
+  title: "The Mango",
+};
+socket.emit("newOrder", msgCurrentVideo);
